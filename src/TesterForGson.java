@@ -3,9 +3,12 @@ import java.util.Arrays;
 import com.google.gson.Gson;
 
 class BagOfPrimitives2 {
-	  private int value1 = 8;
-	  private String value2 = "def";
-	  private transient int value3 = 9;
+	  @SuppressWarnings("unused")
+	private int value1 = 8;
+	  @SuppressWarnings("unused")
+	private String value2 = "def";
+	  @SuppressWarnings("unused")
+	private transient int value3 = 9;
 	  private int[] BagOfInts= {2,454};
 	  BagOfPrimitives2() {
 	    // no-args constructor
@@ -16,8 +19,11 @@ class BagOfPrimitives2 {
 	  }
 	}
 class BagOfPrimitives {
+	@SuppressWarnings("unused")
   private int value1 = 1;
+	@SuppressWarnings("unused")
   private String value2 = "abc";
+	@SuppressWarnings("unused")
   private transient int value3 = 3;
   private int[] BagOfInts= {1,3,4};
   BagOfPrimitives2 nestedObj = new BagOfPrimitives2();

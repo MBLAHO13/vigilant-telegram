@@ -1,11 +1,11 @@
 
-public class Test extends Questionnaire { //for once, "test" is a final name...
+public class Test extends Survey { //for once, "test" is a final name...
 
 	public Test() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	@Override	
 	public void createQuestionnaire() {
 		// TODO Auto-generated method stub
 		
@@ -16,21 +16,14 @@ public class Test extends Questionnaire { //for once, "test" is a final name...
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void loadQuestionnaire() {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void takeQuestionnaire() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void tabulateQuestionnaire() {
 		// TODO Auto-generated method stub
 		
 	}

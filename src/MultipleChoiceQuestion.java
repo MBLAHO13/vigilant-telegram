@@ -1,5 +1,6 @@
 
 public class MultipleChoiceQuestion extends Question {
+	//will also be used for T/F, seeing as a true false question is simply a 2-choice question, multiple choice is n-choice
 
 	public MultipleChoiceQuestion() {
 		// TODO Auto-generated constructor stub
