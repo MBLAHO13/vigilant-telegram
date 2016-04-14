@@ -1,5 +1,5 @@
 
-public class ShortAnswerResult extends Result {
+public class ShortAnswerResult extends EssayResult {
 
 	public ShortAnswerResult() {
 		// TODO Auto-generated constructor stub
@@ -9,12 +9,6 @@ public class ShortAnswerResult extends Result {
 	public boolean isCorrect(Result toCompare) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public String ppResponse() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

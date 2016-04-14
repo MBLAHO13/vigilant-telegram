@@ -1,21 +1,9 @@
 
 
-public class ShortAnswerQuestion extends Question {
+public class ShortAnswerQuestion extends EssayQuestion {
 
 	public ShortAnswerQuestion() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void ppQuestion() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
