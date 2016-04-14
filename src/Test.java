@@ -27,5 +27,10 @@ public class Test extends Survey { //for once, "test" is a final name...
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public double scoreQuestionnaire(){
+		return 0; //TODO implement meeeee
+		
+	}
 
 }

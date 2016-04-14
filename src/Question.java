@@ -1,10 +1,11 @@
+
 import java.util.ArrayList;
 
 
 public abstract class Question {
 	private String question;
-	private String answer;
-	private String userAnswer;
+	private Result answer;
+	private Result userAnswer;
 	@SuppressWarnings("unused")
 	private ArrayList<String> answerChoices;
 	private String directions;
@@ -26,19 +27,19 @@ public abstract class Question {
 		this.question = question;
 	}
 
-	public String getAnswer() {
+	public Result getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(Result answer) {
 		this.answer = answer;
 	}
 
-	public String getUserAnswer() {
+	public Result getUserAnswer() {
 		return userAnswer;
 	}
 
-	public void setUserAnswer(String userAnswer) {
+	public void setUserAnswer(Result userAnswer) {
 		this.userAnswer = userAnswer;
 	}
 	public String getDirections() {

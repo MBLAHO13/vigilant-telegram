@@ -17,4 +17,10 @@ public class ShortAnswerResult extends Result {
 		return null;
 	}
 
+	@Override
+	public void acceptInput() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

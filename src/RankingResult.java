@@ -17,4 +17,10 @@ public class RankingResult extends Result {
 		return null;
 	}
 
+	@Override
+	public void acceptInput() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

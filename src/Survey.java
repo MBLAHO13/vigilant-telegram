@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Survey {
 	
 	protected ArrayList<Question> questionList;

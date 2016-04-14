@@ -1,4 +1,5 @@
 
+
 public class RankingQuestion extends Question {
 
 	public RankingQuestion() {
