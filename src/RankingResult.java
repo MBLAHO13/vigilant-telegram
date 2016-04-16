@@ -1,6 +1,7 @@
 
 public class RankingResult extends Result {
 
+	
 	public RankingResult() {
 		// TODO Auto-generated constructor stub
 	}

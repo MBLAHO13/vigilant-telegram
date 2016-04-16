@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+
 
 public class MatchingResult extends Result {
 
+	public ArrayList<String> choices;
 	public MatchingResult() {
 		// TODO Auto-generated constructor stub
 	}

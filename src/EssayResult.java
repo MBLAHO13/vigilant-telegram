@@ -1,6 +1,6 @@
 
 public class EssayResult extends Result {
-
+	private String essayResponse;
 	public EssayResult() {
 		// TODO Auto-generated constructor stub
 	}
@@ -21,6 +21,14 @@ public class EssayResult extends Result {
 	public void acceptInput() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getEssayResponse() {
+		return essayResponse;
+	}
+
+	public void setEssayResponse(String essayResponse) {
+		this.essayResponse = essayResponse;
 	}
 
 }
