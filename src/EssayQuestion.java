@@ -1,4 +1,5 @@
 public class EssayQuestion extends Question {
+	//no answer choices needed
 
 	public EssayQuestion() {
 		// TODO Auto-generated constructor stub

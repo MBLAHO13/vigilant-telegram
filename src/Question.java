@@ -7,7 +7,6 @@ public abstract class Question {
 	private Result correctResponse;
 	private Result userResponse;
 	@SuppressWarnings("unused")
-	private ArrayList<String> answerChoices;
 	private String directions;
 	
 	// ppFoo == pretty print FOO

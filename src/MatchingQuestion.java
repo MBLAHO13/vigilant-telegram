@@ -1,13 +1,12 @@
-public class MatchingQuestion extends Question {
+import java.util.ArrayList;
+
+public class MatchingQuestion extends RankingQuestion {
+	
+	//two columns
+	private ArrayList<String> rightChoices; 
 
 	public MatchingQuestion() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void ppPrompt() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -50,6 +49,14 @@ public class MatchingQuestion extends Question {
 	public void reviseEntireQuestion() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public ArrayList<String> getRightChoices() {
+		return rightChoices;
+	}
+
+	public void setRightChoices(ArrayList<String> rightChoices) {
+		this.rightChoices = rightChoices;
 	}
 
 }
