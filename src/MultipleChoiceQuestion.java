@@ -49,4 +49,10 @@ public class MultipleChoiceQuestion extends Question {
 		return null;
 	}
 
+	@Override
+	public void reviseEntireQuestion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

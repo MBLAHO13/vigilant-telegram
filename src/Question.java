@@ -18,6 +18,7 @@ public abstract class Question {
 	public abstract boolean checkUserResponse();
 	public abstract boolean parseUserInput();
 	public abstract String sanitizer(String rawInput);
+	public abstract void reviseEntireQuestion(); //and i mean it!
 	 
 	public String getPrompt() {
 		return prompt;
@@ -48,4 +49,5 @@ public abstract class Question {
 	public void setDirections(String directions) {
 		this.directions = directions;
 	}
+	
 }

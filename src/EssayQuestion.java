@@ -46,4 +46,10 @@ public class EssayQuestion extends Question {
 		return null;
 	}
 
+	@Override
+	public void reviseEntireQuestion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

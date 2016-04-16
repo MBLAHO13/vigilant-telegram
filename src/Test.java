@@ -17,10 +17,9 @@ public class Test extends Survey { //for once, "test" is a final name...
 		
 	}
 	
-	@Override
-	public void loadQuestionnaire() {
+	public static void loadQuestionnaire() {
 		// TODO Auto-generated method stub
-		
+		//hopefully you can overrride a static with a static cuz if not fuck me
 	}
 	@Override
 	public void takeQuestionnaire() {
