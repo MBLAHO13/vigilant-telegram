@@ -19,7 +19,7 @@ public class ShortAnswerQuestion extends EssayQuestion {
 	}
 
 	@Override
-	public boolean checkUserAnswer() {
+	public boolean checkUserResponse() {
 		// TODO Auto-generated method stub
 		return false;
 	}

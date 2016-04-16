@@ -3,44 +3,44 @@ import java.util.ArrayList;
 
 
 public abstract class Question {
-	private String question;
-	private Result answer;
-	private Result userAnswer;
+	private String prompt;
+	private Result correctResponse;
+	private Result userResponse;
 	@SuppressWarnings("unused")
 	private ArrayList<String> answerChoices;
 	private String directions;
 	
 	// ppFoo == pretty print FOO
-	public abstract void ppQuestion();
+	public abstract void ppPrompt();
 	public abstract void ppAnswerChoices();
 	public abstract void ppDirections();
 	public abstract void ppUserInput();
-	public abstract boolean checkUserAnswer();
+	public abstract boolean checkUserResponse();
 	public abstract boolean parseUserInput();
 	public abstract String sanitizer(String rawInput);
 	 
-	public String getQuestion() {
-		return question;
+	public String getPrompt() {
+		return prompt;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setPrompt(String prompt) {
+		this.prompt = prompt;
 	}
 
-	public Result getAnswer() {
-		return answer;
+	public Result getCorrectResponse() {
+		return correctResponse;
 	}
 
-	public void setAnswer(Result answer) {
-		this.answer = answer;
+	public void setCorrectResponse(Result correctResponse) {
+		this.correctResponse = correctResponse;
 	}
 
-	public Result getUserAnswer() {
-		return userAnswer;
+	public Result getUserResponse() {
+		return userResponse;
 	}
 
-	public void setUserAnswer(Result userAnswer) {
-		this.userAnswer = userAnswer;
+	public void setUserResponse(Result userResponse) {
+		this.userResponse = userResponse;
 	}
 	public String getDirections() {
 		return directions;

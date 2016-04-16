@@ -8,7 +8,7 @@ public class MultipleChoiceQuestion extends Question {
 	}
 
 	@Override
-	public void ppQuestion() {
+	public void ppPrompt() {
 		// TODO Auto-generated method stub
 
 	}
@@ -32,7 +32,7 @@ public class MultipleChoiceQuestion extends Question {
 	}
 
 	@Override
-	public boolean checkUserAnswer() {
+	public boolean checkUserResponse() {
 		// TODO Auto-generated method stub
 		return false;
 	}
