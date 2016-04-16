@@ -1,15 +1,9 @@
 
 
-public class RankingQuestion extends Question {
+public class RankingQuestion extends MatchingQuestion {
 
 	public RankingQuestion() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void ppPrompt() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
