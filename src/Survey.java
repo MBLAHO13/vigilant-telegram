@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Survey {
 	
 	protected ArrayList<Question> questionList;
-	protected int numberOfQuestions;
 	protected ArrayList<String> reportData; //raw report data
 
 
@@ -44,6 +43,10 @@ public class Survey {
 	public void tabulateQuestionnaire() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void ppQuestionnaire(){
+		//TODO Implement me
 	}
 
 	public ArrayList<Question> getQuestionList() {
