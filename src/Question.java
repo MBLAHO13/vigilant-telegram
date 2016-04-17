@@ -1,12 +1,10 @@
 
-import java.util.ArrayList;
 
 
 public abstract class Question {
 	private String prompt;
 	private Result correctResponse;
 	private Result userResponse;
-	@SuppressWarnings("unused")
 	private String directions;
 	
 	// ppFoo == pretty print FOO
@@ -18,6 +16,7 @@ public abstract class Question {
 	public abstract boolean parseUserInput();
 	public abstract String sanitizer(String rawInput);
 	public abstract void reviseEntireQuestion(); //and i mean it!
+	public abstract Question build();
 	 
 	public String getPrompt() {
 		return prompt;

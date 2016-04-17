@@ -31,4 +31,10 @@ public class EssayResult extends Result {
 		this.essayResponse = essayResponse;
 	}
 
+	@Override
+	public void build() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

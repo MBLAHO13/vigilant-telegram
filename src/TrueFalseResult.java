@@ -1,22 +1,17 @@
 
-public class MCResult extends Result {
+public class TrueFalseResult extends MultipleChoiceResult {
 
-	public MCResult() {
+	public TrueFalseResult() {
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
 	public boolean isCorrect(Result toCompare) {
 		// TODO Auto-generated method stub
+		//make sure only T XOR F
 		return false;
 	}
-
-	public String ppResponse() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
-	public void acceptInput() {
+	public void build() {
 		// TODO Auto-generated method stub
 		
 	}

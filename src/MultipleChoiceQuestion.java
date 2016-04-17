@@ -59,4 +59,10 @@ public class MultipleChoiceQuestion extends Question {
 		
 	}
 
+	@Override
+	public Question build() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

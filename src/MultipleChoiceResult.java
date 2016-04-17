@@ -1,20 +1,16 @@
-import java.util.List;
 
+public class MultipleChoiceResult extends Result {
 
-public class MatchingResult extends Result {
-
-	private List<String> correctResponse ;
-	public MatchingResult() {
+	private String correctResult;
+	public MultipleChoiceResult() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public boolean isCorrect(Result toCompare) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public String ppResponse() {
 		// TODO Auto-generated method stub
 		return null;
@@ -26,12 +22,12 @@ public class MatchingResult extends Result {
 		
 	}
 
-	public List<String> getCorrectResponse() {
-		return correctResponse;
+	public String getCorrectResult() {
+		return correctResult;
 	}
 
-	public void setCorrectResponse(List<String> correctResponse) {
-		this.correctResponse = correctResponse;
+	public void setCorrectResult(String correctResult) {
+		this.correctResult = correctResult;
 	}
 
 	@Override

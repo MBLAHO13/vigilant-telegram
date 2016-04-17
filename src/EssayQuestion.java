@@ -53,4 +53,10 @@ public class EssayQuestion extends Question {
 		
 	}
 
+	@Override
+	public Question build() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

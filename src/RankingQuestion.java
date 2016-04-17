@@ -75,4 +75,10 @@ public class RankingQuestion extends Question {
 		this.leftChoices = leftChoices;
 	}
 
+	@Override
+	public Question build() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
