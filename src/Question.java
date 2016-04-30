@@ -3,7 +3,7 @@
 
 public abstract class Question {
 	private String prompt;
-	private Result correctResponse;
+	
 	private Result userResponse;
 	private String directions;
 	
@@ -26,13 +26,6 @@ public abstract class Question {
 		this.prompt = prompt;
 	}
 
-	public Result getCorrectResponse() {
-		return correctResponse;
-	}
-
-	public void setCorrectResponse(Result correctResponse) {
-		this.correctResponse = correctResponse;
-	}
 
 	public Result getUserResponse() {
 		return userResponse;

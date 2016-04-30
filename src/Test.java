@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Test extends Survey { //for once, "test" is a final name...
 
+	//RRRRRGH I WANT A ONE TO MANY DATA STRUCTURE. NOT A STUPID KLUDGE.
+	List<List<Result>> questionResponse = new ArrayList<List<Result>>();
+	
 	public Test() {
 		// TODO Auto-generated constructor stub
 	}
@@ -30,6 +36,22 @@ public class Test extends Survey { //for once, "test" is a final name...
 	public double scoreQuestionnaire(){
 		return 0; //TODO implement meeeee
 		
+	}
+	
+	public List<Result> getCorrectResponse(Integer number) {
+		return questionResponse.get(number);
+	}
+
+	public void setCorrectResponse(Result correctResponse, Integer question) {
+		if(questionResponse.get(question) != null){
+			this.questionResponse.add(question, new ArrayList<Result>());
+		} else{
+			this.questionResponse.get(question).add(correctResponse);
+		}
+	}
+	
+	public void clearCorrectResponse(Integer question){
+		questionResponse.get(question).clear();
 	}
 
 }

@@ -1,7 +1,7 @@
 import java.util.List;
 
 
-public class MatchingResult extends Result {
+public class MatchingResult extends RankingResult {
 
 	private List<String> correctResponse ;
 	public MatchingResult() {
@@ -24,14 +24,6 @@ public class MatchingResult extends Result {
 	public void acceptInput() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public List<String> getCorrectResponse() {
-		return correctResponse;
-	}
-
-	public void setCorrectResponse(List<String> correctResponse) {
-		this.correctResponse = correctResponse;
 	}
 
 	@Override
