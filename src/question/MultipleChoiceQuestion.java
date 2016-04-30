@@ -1,12 +1,22 @@
+package question;
 import java.util.ArrayList;
 
-public class MatchingQuestion extends RankingQuestion {
-	
-	//two columns
-	private ArrayList<String> rightChoices; 
 
-	public MatchingQuestion() {
+
+
+public class MultipleChoiceQuestion extends Question {
+	//will also be used for T/F, seeing as a true false question is simply a 2-choice question, multiple choice is n-choice
+	
+	private ArrayList<String>	answerChoices;
+
+	public MultipleChoiceQuestion() {
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void ppPrompt() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
@@ -51,12 +61,10 @@ public class MatchingQuestion extends RankingQuestion {
 		
 	}
 
-	public ArrayList<String> getRightChoices() {
-		return rightChoices;
-	}
-
-	public void setRightChoices(ArrayList<String> rightChoices) {
-		this.rightChoices = rightChoices;
+	@Override
+	public Question build() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,9 +1,20 @@
+package question;
+import java.util.ArrayList;
 
 
-public class ShortAnswerQuestion extends EssayQuestion {
-	private int maxLength = 100; //whatever man
-	public ShortAnswerQuestion() {
+public class MatchingQuestion extends RankingQuestion {
+	
+	//two columns
+	private ArrayList<String> rightChoices; 
+
+	public MatchingQuestion() {
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void ppAnswerChoices() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
@@ -11,7 +22,7 @@ public class ShortAnswerQuestion extends EssayQuestion {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	@Override
 	public void ppUserInput() {
 		// TODO Auto-generated method stub
@@ -36,12 +47,18 @@ public class ShortAnswerQuestion extends EssayQuestion {
 		return null;
 	}
 
-	public int getMaxLength() {
-		return maxLength;
+	@Override
+	public void reviseEntireQuestion() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setMaxLength(int maxLength) {
-		this.maxLength = maxLength;
+	public ArrayList<String> getRightChoices() {
+		return rightChoices;
+	}
+
+	public void setRightChoices(ArrayList<String> rightChoices) {
+		this.rightChoices = rightChoices;
 	}
 
 }

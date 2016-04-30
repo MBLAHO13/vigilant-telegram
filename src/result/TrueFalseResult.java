@@ -1,3 +1,4 @@
+package result;
 
 public class TrueFalseResult extends MultipleChoiceResult {
 

@@ -1,20 +1,17 @@
-import java.util.List;
+package result;
 
+public class MultipleChoiceResult extends Result {
 
-public class MatchingResult extends RankingResult {
-
-	private List<String> correctResponse ;
-	public MatchingResult() {
+	private String correctResult;
+	public MultipleChoiceResult() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public boolean isCorrect(Result toCompare) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public String ppResponse() {
 		// TODO Auto-generated method stub
 		return null;
@@ -24,6 +21,14 @@ public class MatchingResult extends RankingResult {
 	public void acceptInput() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getCorrectResult() {
+		return correctResult;
+	}
+
+	public void setCorrectResult(String correctResult) {
+		this.correctResult = correctResult;
 	}
 
 	@Override

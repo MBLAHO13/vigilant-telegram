@@ -1,3 +1,4 @@
+package result;
 
 public class ShortAnswerResult extends EssayResult {
 	private String shortAnswerResponse;

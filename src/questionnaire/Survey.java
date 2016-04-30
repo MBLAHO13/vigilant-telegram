@@ -1,4 +1,7 @@
+package questionnaire;
 import java.util.ArrayList;
+
+import question.Question;
 
 public class Survey {
 	
