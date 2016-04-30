@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.google.gson.*;
@@ -60,4 +61,22 @@ public class IOUtilities {
 		}
 	}
 	
+	public static Integer choices(List<String> options){
+		Scanner scanchoice = new Scanner(System.in);
+		int choicemenu = 0;
+		for (int i = 1; i<  options.size() + 1; i++) {
+			System.out.println(i + ") " + options.get(i));
+		}
+		do {
+			if(scanchoice.hasNextInt()){
+				choicemenu = scanchoice.nextInt();
+			} else{
+				System.out.println("Enter an integer.");
+				scanchoice.nextLine();
+				continue;
+	    }
+		}while (choicemenu != 0);
+		scanchoice.close();
+		return choicemenu;
+	}
 }
