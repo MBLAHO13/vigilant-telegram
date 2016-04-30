@@ -69,14 +69,21 @@ public class IOUtilities {
 			System.out.println(i + ") " + options.get(i));
 		}
 		do {
+			System.out.println(": ");
 			if(scanchoice.hasNextInt()){
-				choicemenu = scanchoice.nextInt();
-			} else{
+				int input = scanchoice.nextInt();
+				if (input >= 1 && input <= options.size()){
+					scanchoice.close();
+					return choicemenu;
+				}else{
+					System.out.println("Choice must be a value between 1 and " + options.size() + ".");
+				}
+			}else{
 				System.out.println("Enter an integer.");
 				scanchoice.nextLine();
-				continue;
-	    }
+			}
 		}while (choicemenu != 0);
+		System.err.println("[WARN] Bottom-out in choices()"); //This should never happen
 		scanchoice.close();
 		return choicemenu;
 	}

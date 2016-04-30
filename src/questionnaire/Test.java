@@ -14,8 +14,9 @@ public class Test extends Survey { //for once, "test" is a final name...
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override	
-	public void createQuestionnaire() {
+	
+	public static Survey createQuestionnaire() {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

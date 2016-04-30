@@ -14,7 +14,8 @@ public class Survey {
 	}
 
 	
-	public void createQuestionnaire() {
+	public static Survey createQuestionnaire() {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
