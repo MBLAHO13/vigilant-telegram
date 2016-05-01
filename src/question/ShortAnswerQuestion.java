@@ -27,7 +27,7 @@ public class ShortAnswerQuestion extends EssayQuestion {
 	}
 
 	@Override
-	public boolean parseUserInput() {
+	public boolean acceptInput() {
 		// TODO Auto-generated method stub
 		return false;
 	}

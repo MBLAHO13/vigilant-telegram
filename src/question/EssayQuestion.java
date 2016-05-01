@@ -37,7 +37,7 @@ public class EssayQuestion extends Question {
 	}
 
 	@Override
-	public boolean parseUserInput() {
+	public boolean acceptInput() {
 		// TODO Auto-generated method stub
 		return false;
 	}

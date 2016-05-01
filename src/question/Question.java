@@ -11,12 +11,12 @@ public abstract class Question {
 	private String directions;
 	
 	// ppFoo == pretty print FOO
-	public abstract void ppPrompt();
-	public abstract void ppAnswerChoices();
-	public abstract void ppDirections();
+	protected abstract void ppPrompt();
+	protected abstract void ppAnswerChoices();
+	protected abstract void ppDirections();
 	public abstract void ppUserInput();
 	public abstract boolean checkUserResponse();
-	public abstract boolean parseUserInput();
+	public abstract boolean acceptInput();
 	public abstract String sanitizer(String rawInput);
 	public abstract void reviseEntireQuestion(); //and i mean it!
 	public abstract Question build();
@@ -44,4 +44,9 @@ public abstract class Question {
 		this.directions = directions;
 	}
 	
+	public void ppQuestion(){
+		this.ppPrompt();
+		this.ppAnswerChoices();
+		this.ppDirections();
+	}
 }

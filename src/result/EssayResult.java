@@ -46,6 +46,7 @@ public class EssayResult extends Result {
 		String userInput = userReader.nextLine();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 			this.userResponse = this.userResponse + userInput;
+			userInput = userReader.nextLine();
 		}
 		userReader.close();
 		

@@ -2,6 +2,7 @@ package questionnaire;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import driverclasses.IOUtilities;
@@ -10,12 +11,19 @@ import question.Question;
 
 public class Survey {
 	
-	protected ArrayList<Question> questionList;
-	protected ArrayList<String> reportData; //raw report data
+	protected List<Question> questionList;
+	//TODO part 3 (do I like this format?)
+	protected List<String> reportData; //raw report data
 
 
 	public Survey() {
-		// TODO Auto-generated constructor stub
+		this.questionList = new ArrayList<Question>();
+		this.reportData = new ArrayList<String>();
+	}
+	
+	public Survey(List<Question> questionList) {
+		this.questionList = questionList;
+		this.reportData = new ArrayList<String>();
 	}
 
 	
@@ -27,7 +35,7 @@ public class Survey {
 
 
 	public void editQuestionnaire() {
-		// TODO Auto-generated method stub
+		// TODO Part3
 		
 	}
 
@@ -45,21 +53,25 @@ public class Survey {
 
 	
 	public void takeQuestionnaire() {
-		// TODO Auto-generated method stub
+		for(Question q : questionList){
+			q.ppQuestion();
+			q.acceptInput();
+		}
 		
 	}
-
 	
 	public void tabulateQuestionnaire() {
-		// TODO Auto-generated method stub
+		// TODO part3
 		
 	}
 	
 	public void ppQuestionnaire(){
-		//TODO Implement me
+		for(Question q : questionList){
+			q.ppQuestion();
+		}
 	}
 
-	public ArrayList<Question> getQuestionList() {
+	public List<Question> getQuestionList() {
 		return questionList;
 	}
 }

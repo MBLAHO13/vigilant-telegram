@@ -1,7 +1,6 @@
 package result;
 import java.util.List;
 
-
 public class MatchingResult extends RankingResult {
 
 	private List<String> correctResponse ;

@@ -7,7 +7,7 @@ import java.util.Date;
 import menu.Menu1;
 
 
-public class TestingSoftware {
+public class main {
 
 	/**
 	 * @param args

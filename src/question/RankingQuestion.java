@@ -46,12 +46,6 @@ public class RankingQuestion extends Question {
 	}
 
 	@Override
-	public boolean parseUserInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public String sanitizer(String rawInput) {
 		// TODO Auto-generated method stub
 		return null;
@@ -65,7 +59,7 @@ public class RankingQuestion extends Question {
 
 	@Override
 	public void reviseEntireQuestion() {
-		// TODO Auto-generated method stub
+		// TODO Part 3
 		
 	}
 
@@ -81,6 +75,18 @@ public class RankingQuestion extends Question {
 	public Question build() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void ppQuestion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean acceptInput() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
