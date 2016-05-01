@@ -36,11 +36,11 @@ public class Survey {
 		return (Survey) (IOUtilities.deserialize(IOUtilities.slurp(IOUtilities.recieveFilename()), Survey.class));
 	}
 	
-	public void saveQuestionnaire(Survey questionnaire){
+	public void saveQuestionnaire(){
 		Scanner scanner = IOUtilities.safeScanner(System.in);
 		
 		File f = new File("Storage" + System.getProperty("file.separator") + scanner.nextLine() + (new Date()).getTime());
-		IOUtilities.spew(IOUtilities.serialize(questionnaire), f);
+		IOUtilities.spew(IOUtilities.serialize(this), f);
 	}
 
 	
