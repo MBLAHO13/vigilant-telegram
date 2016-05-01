@@ -27,7 +27,8 @@ public class Survey {
 	}
 
 	
-	public static  void loadQuestionnaire() {
+	public static Survey loadQuestionnaire() {
+		return null;
 		//static because we don't want to make a questionnaire to load it cuz that's fuckin dumb
 		// TODO Auto-generated method stub
 		

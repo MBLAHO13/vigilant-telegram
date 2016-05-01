@@ -1,6 +1,7 @@
 package driverclasses;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -16,6 +17,7 @@ public class IOUtilities {
 		return gson.toJson(obj);
 	}
 	
+	// to create a FOO, pass in FOO.class as targetClass!
 	public static Object deserialize(String slurp, Class<?> targetClass){ //this needs to be cast properly on the other end
 		Gson gson = new Gson();
 		return gson.fromJson(slurp, targetClass);   
@@ -25,7 +27,6 @@ public class IOUtilities {
 		Scanner scanner  = null;
 		String contents = null;
 		try {
-
 			scanner = new Scanner(new File(location));
 			contents = scanner.useDelimiter("\\A").next();
 
@@ -38,7 +39,6 @@ public class IOUtilities {
 				scanner.close();    
 			}
 		}//EO file read
-		
 		return contents;
 		
 	}
@@ -50,7 +50,6 @@ public class IOUtilities {
 			//not sure if I want this to overwrite or preserve...
 		  System.err.println("[WARN] Overwriting file " + filename );
 		}
-		
 		try {
 			writer = new PrintWriter(filename, "UTF-8");
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
@@ -59,28 +58,37 @@ public class IOUtilities {
 		}
 		if (writer != null){
 			writer.write(contents);
+			writer.flush();
 		}
 	}
 	
 	public static Integer choices(List<String> options){
-		Scanner scanchoice = new Scanner(System.in);
+		Scanner scanchoice = new Scanner(new FilterInputStream(System.in) {
+		    @Override
+		    public void close() throws IOException {
+		        // Apparently if you close a scanner attached to STDIN it nukes STDIN. Java.
+		    	// This empty method keeps STDIN open for future scanners.
+		    	// The `throws` will be caught by the black hole in main.
+		    }
+		});
 		int choicemenu = 0;
 		for (int i = 1; i<  options.size() + 1; i++) {
-			System.out.println(i + ") " + options.get(i));
+			System.out.println(i + ") " + options.get(i -1));
 		}
 		do {
 			System.out.println(": ");
-			if(scanchoice.hasNextInt()){
-				int input = scanchoice.nextInt();
-				if (input >= 1 && input <= options.size()){
-					scanchoice.close();
-					return choicemenu;
-				}else{
-					System.out.println("Choice must be a value between 1 and " + options.size() + ".");
-				}
-			}else{
+			while (!scanchoice.hasNextInt()) {
 				System.out.println("Enter an integer.");
-				scanchoice.nextLine();
+				System.out.println(":");
+				scanchoice.next();
+			}
+			choicemenu = scanchoice.nextInt();
+			if (choicemenu >= 1 && choicemenu <= options.size()){
+				scanchoice.close();
+				return choicemenu;
+			}else{
+				System.out.println("Choice must be a value between 1 and " + options.size() + ".");
+				choicemenu = 0;
 			}
 		}while (choicemenu != 0);
 		System.err.println("[WARN] Bottom-out in choices()"); //This should never happen

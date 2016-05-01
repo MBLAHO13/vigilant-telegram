@@ -16,11 +16,11 @@ public class Menu1 implements Menu {
 	@Override
 	public State run(Survey questionnaire) {
 		    switch (IOUtilities.choices(menu1)){
-		        case 1: //Create a new survey -- Menu 3!
+		        case 1: //Test
 		        	return new State (new Menu2("test"), Survey.createQuestionnaire()) ;
-		        case 2: // Display a Survey
+		        case 2: // Survey
 		            return new State (new Menu2("survey"), questionnaire) ;
-		        case 3: //Load a Survey
+		        case 3: //Quit
 		        	return null;
 		        default:
 		        	System.err.println("[WARN] Bottom-out in Menu1.run()");
