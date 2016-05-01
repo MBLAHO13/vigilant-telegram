@@ -1,40 +1,53 @@
 package result;
 
+import java.util.Scanner;
+
+import driverclasses.IOUtilities;
+
 public class EssayResult extends Result {
-	private String essayResponse;
+	protected String userResponse;
 	public EssayResult() {
-		// TODO Auto-generated constructor stub
+		this.userResponse = "";
+	}
+	
+	public EssayResult(String userInput) {
+		this.userResponse = userInput;
 	}
 
 	@Override
 	public boolean isCorrect(Result toCompare) {
-		// TODO Auto-generated method stub
+		// TODO Part3
 		return false;
 	}
 
 	@Override
-	public String ppResponse() {
-		// TODO Auto-generated method stub
-		return null;
+	public void ppResponse() {
+		System.out.println(userResponse);
 	}
 
-	@Override
-	public void acceptInput() {
-		// TODO Auto-generated method stub
-		
+	public String getResponse() {
+		return userResponse;
 	}
 
-	public String getEssayResponse() {
-		return essayResponse;
-	}
-
-	public void setEssayResponse(String essayResponse) {
-		this.essayResponse = essayResponse;
+	public void setResponse(String essayResponse) {
+		this.userResponse = essayResponse;
 	}
 
 	@Override
 	public void build() {
-		// TODO Auto-generated method stub
+		
+		
+	}
+
+	@Override
+	public void acceptInput() {
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Your answer (or" + IOUtilities.SENTINEL + " on it's own line to quit.");
+		String userInput = userReader.nextLine();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+			this.userResponse = this.userResponse + userInput;
+		}
+		userReader.close();
 		
 	}
 

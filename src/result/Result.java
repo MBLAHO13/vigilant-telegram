@@ -7,7 +7,7 @@ public abstract class Result {
 	}
 	
 	public abstract boolean isCorrect(Result toCompare);
-	public abstract String ppResponse();
+	public abstract void ppResponse();
 	public abstract void acceptInput();
 	public abstract void build();
 }
