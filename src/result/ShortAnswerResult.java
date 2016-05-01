@@ -1,13 +1,15 @@
 package result;
 
 public class ShortAnswerResult extends EssayResult {
-	public ShortAnswerResult() {
-		// TODO Auto-generated constructor stub
+	public ShortAnswerResult() {}
+	
+	public ShortAnswerResult(String userInput){
+		super(userInput);
 	}
 
 	@Override
 	public boolean isCorrect(Result toCompare) {
-		// TODO Auto-generated method stub
+		// TODO Part3
 		return false;
 	}
 

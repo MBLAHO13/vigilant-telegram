@@ -21,8 +21,8 @@ public class EssayResult extends Result {
 	}
 
 	@Override
-	public void ppResponse() {
-		System.out.println(userResponse);
+	public String ppResponse() {
+		return userResponse;
 	}
 
 	public String getResponse() {
@@ -35,7 +35,7 @@ public class EssayResult extends Result {
 
 	@Override
 	public void build() {
-		
+		//TODO: Part 2
 		
 	}
 
