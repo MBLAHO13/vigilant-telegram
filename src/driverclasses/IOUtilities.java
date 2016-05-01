@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilterInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -24,19 +25,19 @@ public class IOUtilities {
 	}
 	
 	public static String slurp(String location) {
-		Scanner scanner  = null;
+		Scanner fileScanner = null;
 		String contents = null;
 		try {
-			scanner = new Scanner(new File(location));
-			contents = scanner.useDelimiter("\\A").next();
+			fileScanner = new Scanner(new File(location));
+			contents = fileScanner.useDelimiter("\\A").next();
 
         } //EOT
         catch(IOException ex) {
             System.out.println("Unable to open file '" + location + "'");                
         }
 		finally {
-			if(scanner != null){
-				scanner.close();    
+			if(fileScanner != null){
+				fileScanner.close();    
 			}
 		}//EO file read
 		return contents;
@@ -63,14 +64,7 @@ public class IOUtilities {
 	}
 	
 	public static Integer choices(List<String> options){
-		Scanner scanchoice = new Scanner(new FilterInputStream(System.in) {
-		    @Override
-		    public void close() throws IOException {
-		        // Apparently if you close a scanner attached to STDIN it nukes STDIN. Java.
-		    	// This empty method keeps STDIN open for future scanners.
-		    	// The `throws` will be caught by the black hole in main.
-		    }
-		});
+		Scanner scanchoice = safeScanner(System.in);
 		int choicemenu = 0;
 		for (int i = 1; i<  options.size() + 1; i++) {
 			System.out.println(i + ") " + options.get(i -1));
@@ -94,5 +88,17 @@ public class IOUtilities {
 		System.err.println("[WARN] Bottom-out in choices()"); //This should never happen
 		scanchoice.close();
 		return choicemenu;
+	}
+	
+	public static Scanner safeScanner(InputStream in){
+		Scanner betterScanner = new Scanner(new FilterInputStream(in) {
+		    @Override
+		    public void close() throws IOException {
+		        // Apparently if you close a scanner attached to STDIN it nukes STDIN. Java.
+		    	// This empty method keeps STDIN open for future scanners.
+		    	// The `throws` will be caught by the black hole in main.
+		    }
+		});
+		return betterScanner;
 	}
 }

@@ -28,8 +28,8 @@ public class Test extends Survey { //for once, "test" is a final name...
 	}
 	
 	public static Survey loadQuestionnaire() {
+		
 		return null;
-		// TODO Auto-generated method stub
 	}
 	@Override
 	public void takeQuestionnaire() {

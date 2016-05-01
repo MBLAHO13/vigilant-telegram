@@ -44,7 +44,6 @@ public class TesterForGson {
 	 * @param args
 	 */
 	public static void TesterForGSON(String[] args) {
-		// TODO Auto-generated method stub
 		BagOfPrimitives obj = new BagOfPrimitives();
 		String json = IOUtilities.serialize(obj);  
 		System.out.printf(json);

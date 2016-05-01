@@ -17,8 +17,8 @@ public class TestingSoftware {
 			try {
 				s = s.run();
 			} catch (Throwable thrown) { 
-				/* "
-				 * Your program should gracefully handle inappropriate input and NEVER crash."
+				/* 
+				 * "Your program should gracefully handle inappropriate input and NEVER crash."
 				 *  Solution: black hole program errors.
 				 */
 				System.err.println("[ERROR] Throwable " + thrown.toString() + "thrown, something bad happened!");
@@ -27,7 +27,6 @@ public class TestingSoftware {
 				s = null;
 			}
 		}
-		
 	}
 	//
 
