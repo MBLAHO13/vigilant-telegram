@@ -1,5 +1,8 @@
 package question;
 import java.util.ArrayList;
+import java.util.List;
+
+import result.Result;
 
 
 
@@ -63,6 +66,12 @@ public class MultipleChoiceQuestion extends Question {
 
 	@Override
 	public Question build() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Result> buildResult() {
 		// TODO Auto-generated method stub
 		return null;
 	}

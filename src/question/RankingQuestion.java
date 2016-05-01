@@ -1,5 +1,8 @@
 package question;
 import java.util.ArrayList;
+import java.util.List;
+
+import result.Result;
 
 
 
@@ -87,6 +90,12 @@ public class RankingQuestion extends Question {
 	public boolean acceptInput() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Result> buildResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

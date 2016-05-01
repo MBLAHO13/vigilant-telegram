@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ import com.google.gson.*;
 public class IOUtilities {
 	
 	public static final String SENTINEL = "DONE";
+	public static final List<String> CONFIRM = Arrays.asList("Yes", "No");
 
 	public static String serialize(Object obj){
 		Gson gson = new Gson();

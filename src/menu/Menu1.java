@@ -17,9 +17,9 @@ public class Menu1 implements Menu {
 	public State run(Survey questionnaire) {
 		    switch (IOUtilities.choices(menu1)){
 		        case 1: //Test
-		        	return new State (new Menu2("test"), Survey.createQuestionnaire()) ;
+		        	return new State (new Menu2("survey"), questionnaire) ;
 		        case 2: // Survey
-		            return new State (new Menu2("survey"), questionnaire) ;
+		            return new State (new Menu2("test"), questionnaire) ;
 		        case 3: //Quit
 		        	return null;
 		        default:

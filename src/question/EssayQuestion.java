@@ -1,5 +1,9 @@
 package question;
 
+import java.util.List;
+
+import result.Result;
+
 public class EssayQuestion extends Question {
 	//no answer choices needed
 	public EssayQuestion() {
@@ -56,6 +60,12 @@ public class EssayQuestion extends Question {
 
 	@Override
 	public Question build() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Result> buildResult() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -24,9 +24,21 @@ public class Test extends Survey { //for once, "test" is a final name...
 	}
 	
 	public static Survey createQuestionnaire() {
-		return null;
-		// TODO Auto-generated method stub
+		Test newTest = new Test();
+		int doAnother; 
+		do {
+			Question newQuestion = newTest.addQuestion();
+			newTest.question2Responses.put(newQuestion, newQuestion.buildResult());
+			doAnother = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
+		} while (doAnother != 2); //signifies "Add a new question: no"
+		return newTest;
+
 		
+	}
+
+	private List<Result> addResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
