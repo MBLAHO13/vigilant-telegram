@@ -1,5 +1,10 @@
 package questionnaire;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+import driverclasses.IOUtilities;
 
 import question.Question;
 
@@ -28,14 +33,14 @@ public class Survey {
 
 	
 	public static Survey loadQuestionnaire() {
-		return null;
-		//static because we don't want to make a questionnaire to load it cuz that's fuckin dumb
-		// TODO Auto-generated method stub
-		
+		return (Survey) (IOUtilities.deserialize(IOUtilities.slurp(IOUtilities.recieveFilename()), Survey.class));
 	}
 	
-	public void saveQuestionnaire(){
-		//TODO Implement
+	public void saveQuestionnaire(Survey questionnaire){
+		Scanner scanner = IOUtilities.safeScanner(System.in);
+		
+		File f = new File("Storage" + System.getProperty("file.separator") + scanner.nextLine() + (new Date()).getTime());
+		IOUtilities.spew(IOUtilities.serialize(questionnaire), f);
 	}
 
 	

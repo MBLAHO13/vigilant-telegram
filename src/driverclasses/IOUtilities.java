@@ -24,11 +24,11 @@ public class IOUtilities {
 		return gson.fromJson(slurp, targetClass);   
 	}
 	
-	public static String slurp(String location) {
+	public static String slurp(File location) {
 		Scanner fileScanner = null;
 		String contents = null;
 		try {
-			fileScanner = new Scanner(new File(location));
+			fileScanner = new Scanner(location);
 			contents = fileScanner.useDelimiter("\\A").next();
 
         } //EOT
@@ -43,16 +43,15 @@ public class IOUtilities {
 		return contents;
 		
 	}
-	
-	public static void spew(String contents, String filename){
+	//TODO: return status?
+	public static void spew(String contents, File f){
 		PrintWriter writer = null;
-		File f = new File(filename);
 		if(f.exists() && !f.isDirectory()) { 
 			//not sure if I want this to overwrite or preserve...
-		  System.err.println("[WARN] Overwriting file " + filename );
+		  System.err.println("[WARN] Overwriting file " + f.toString() );
 		}
 		try {
-			writer = new PrintWriter(filename, "UTF-8");
+			writer = new PrintWriter(f, "UTF-8");
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			System.err.println("Something's gone horribly wrong in Spew!");
 			e.printStackTrace();
@@ -100,5 +99,20 @@ public class IOUtilities {
 		    }
 		});
 		return betterScanner;
+	}
+
+	public static File recieveFilename(){
+		Scanner userScanner = safeScanner(System.in);
+		File f = null;
+		do {
+			while (!userScanner.hasNext()) {
+				System.out.println("Enter your filepath.");
+				System.out.println(":");
+				userScanner.next();
+			}
+			f = new File(userScanner.nextLine());
+		} while (!f.canRead()); // is this a valid file?
+		userScanner.close();
+		return f;
 	}
 }

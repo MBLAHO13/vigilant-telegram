@@ -2,6 +2,8 @@ package questionnaire;
 import java.util.ArrayList;
 import java.util.List;
 
+import driverclasses.IOUtilities;
+
 import result.Result;
 
 
@@ -28,8 +30,7 @@ public class Test extends Survey { //for once, "test" is a final name...
 	}
 	
 	public static Survey loadQuestionnaire() {
-		
-		return null;
+		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(IOUtilities.recieveFilename()), Test.class));
 	}
 	@Override
 	public void takeQuestionnaire() {
