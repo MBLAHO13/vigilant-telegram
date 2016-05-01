@@ -14,6 +14,7 @@ public class Test extends Survey { //for once, "test" is a final name...
 	Map<Question, List<Result>> question2Responses;
 	
 	public Test() {
+		super(new ArrayList<Question>());
 		question2Responses = new HashMap<Question, List<Result>>();
 	}
 	
