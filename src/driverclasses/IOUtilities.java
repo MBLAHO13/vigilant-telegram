@@ -50,7 +50,9 @@ public class IOUtilities {
 	//TODO: return status?
 	public static void spew(String contents, File f){
 		PrintWriter writer = null;
-		try {
+		
+		try { 
+			f.getParentFile().mkdirs();//forcefully write folders
 			if(f.exists()) { 
 				//not sure if I want this to overwrite or preserve...
 			  System.err.println("[WARN] Overwriting file " + f.toString() );
@@ -83,7 +85,7 @@ public class IOUtilities {
 			System.out.println(": ");
 			while (!scanchoice.hasNextInt()) {
 				System.out.println("Enter an integer.");
-				System.out.println(":");
+				System.out.print(":");
 				scanchoice.next();
 			}
 			choicemenu = scanchoice.nextInt();
@@ -112,18 +114,12 @@ public class IOUtilities {
 		return betterScanner;
 	}
 
-	public static File recieveFilename(){
+	public static String recieveFilename(){
 		Scanner userScanner = safeScanner(System.in);
-		File f = null;
-		do {
-			System.out.println("Enter your filepath.");
-			System.out.println(":");
-			while (!userScanner.hasNext()) {
-				userScanner.next();
-			}
-			f = new File(userScanner.nextLine());
-		} while (f != null); 
+		String path;
+		System.out.println("File name: ");
+		path = userScanner.nextLine();
 		userScanner.close();
-		return f;
+		return path;
 	}
 }

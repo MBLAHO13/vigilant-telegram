@@ -1,4 +1,5 @@
 package questionnaire;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +53,7 @@ public class Test extends Survey { //for once, "test" is a final name...
 	}
 	
 	public static Survey loadQuestionnaire() {
-		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(IOUtilities.recieveFilename()), Test.class));
+		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename())), Test.class));
 	}
 	
 	public double scoreQuestionnaire(){

@@ -42,10 +42,11 @@ public class EssayQuestion extends Question {
 	@Override
 	public Question build() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Your question (or" + IOUtilities.SENTINEL + " on it's own line to quit.");
+		System.out.println("Your question or " + IOUtilities.SENTINEL + " on it's own line to quit.");
 		String userInput = userReader.nextLine();
 		if (userInput.equals(IOUtilities.SENTINEL)){ return null;	} //we decided against making a question
 		this.setPrompt(userInput);
+		System.out.println("No choices to input for type Essay.\n");
 		return this;
 	}
 

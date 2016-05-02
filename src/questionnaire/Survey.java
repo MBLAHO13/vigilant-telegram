@@ -38,6 +38,7 @@ public class Survey {
 			Question newQuestion = newSurvey.addQuestion();
 			if (newQuestion != null){
 				newSurvey.questionList.add(newQuestion);
+				System.out.println("Add another Question?");
 				doAnother = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
 			} else{
 				doAnother = 2; //signifies "Add a new question: no" because they've selected "back" or something broke
@@ -83,14 +84,11 @@ public class Survey {
 
 	
 	public static Survey loadQuestionnaire() {
-		return (Survey) (IOUtilities.deserialize(IOUtilities.slurp(IOUtilities.recieveFilename()), Survey.class));
+		return (Survey) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename())), Survey.class));
 	}
 	
-	public void saveQuestionnaire(){
-		Scanner scanner = IOUtilities.safeScanner(System.in);
-		
-		File f = new File("Storage" + System.getProperty("file.separator") + scanner.nextLine() + (new Date()).getTime());
-		
+	public void saveQuestionnaire(){		
+		File f = new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename());
 		IOUtilities.spew(IOUtilities.serialize(this), f);
 	}
 
