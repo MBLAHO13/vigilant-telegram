@@ -31,20 +31,21 @@ public class MatchingQuestion extends Question {
 	@Override
 	public void ppUserInput() {
 		// TODO Part 3
-
 	}
 
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		System.out.println("Enter your choices, each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
 		List<Integer> choices = new ArrayList<Integer>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 			try {
 				choices.add(Integer.parseInt(userInput.trim()));
+				userInput = userReader.nextLine();
 			}catch (NumberFormatException e){
 				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				userInput = userReader.nextLine();
 			}
 		}
 		userReader.close();
@@ -76,6 +77,7 @@ public class MatchingQuestion extends Question {
 		List<String> choices = new ArrayList<String>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 				choices.add(userInput.trim());
+				userInput = userReader.nextLine();
 		}
 		userReader.close();
 		this.leftChoices = choices;
@@ -88,6 +90,7 @@ public class MatchingQuestion extends Question {
 		List<String> choices = new ArrayList<String>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 				choices.add(userInput.trim());
+				userInput = userReader.nextLine();
 		}
 		userReader.close();
 		this.rightChoices = choices;

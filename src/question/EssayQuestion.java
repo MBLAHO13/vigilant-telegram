@@ -36,11 +36,11 @@ public class EssayQuestion extends Question {
 
 	@Override
 	protected void ppAnswerChoices() {
-		System.out.println("(No answer choices for essays)");
+		System.out.println("(No answer choices for free response)");
 	}
 	
 	protected void buildChoices(){
-		System.out.println("No choices to input for type Essay.\n");
+		System.out.println("No choices to input for free response.\n");
 	}
 
 

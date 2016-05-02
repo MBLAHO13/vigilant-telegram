@@ -31,11 +31,12 @@ public class Test extends Survey { //for once, "test" is a final name...
 		List<Result> validResponses = new ArrayList<Result>();
 		do {
 			Question newQuestion = newTest.addQuestion();
-			System.out.println("Add another correct answer?");
+			
 			int doAnotherResponse;
 			do {
 				validResponses.add(newQuestion.acceptInput());
-				doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
+				System.out.println("Add another correct answer?");
+				doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM);
 			}while (doAnotherResponse !=2);
 			newTest.question2Responses.put(newQuestion, validResponses);
 			System.out.println("Add another question?");

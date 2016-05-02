@@ -35,13 +35,11 @@ public class RankingQuestion extends MatchingQuestion {
 	public void reviseEntireQuestion() {
 		// TODO Part 3
 	}
-
-	protected void buildChoices(){
-		buildLeftChoices();
+	
+	protected void buildRightChoices(){
 		for (int i = 0; i < leftChoices.size(); i++){
 			this.rightChoices.add(i + ""); //i just want it to be a string :(
 		}
-		return;
 	}
 	@Override
 	public Result acceptInput() {
@@ -52,8 +50,10 @@ public class RankingQuestion extends MatchingQuestion {
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 			try {
 				choices.add(Integer.parseInt(userInput.trim()));
+				userInput = userReader.nextLine();
 			}catch (NumberFormatException e){
 				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				userInput= userReader.nextLine();
 			}
 		}
 		userReader.close();

@@ -25,7 +25,7 @@ public class Question {
 	public void ppUserInput() {
 	}
 	
-	private void buildChoices(){
+	protected void buildChoices(){
 		
 	}
 
@@ -39,7 +39,7 @@ public class Question {
 	
 	public Question build() {
 		if(buildPrompt() == null){ return null;} // attempt to build , if it bombs out, bomb out
-		this.buildChoices();
+		buildChoices();
 		return this;
 	}
 	 
@@ -47,7 +47,7 @@ public class Question {
 		
 	}
 	protected void ppPrompt(){
-		System.out.println(prompt);
+		System.out.println("\nQuestion: " + prompt);
 	}
 	
 	public String getPrompt() {

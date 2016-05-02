@@ -36,14 +36,16 @@ public class MultipleChoiceQuestion extends Question {
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choice(s), each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		System.out.println("Enter your choice(s), each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
 		List<Integer> capture = new ArrayList<Integer>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 			try {
 				capture.add(Integer.parseInt(userInput.trim()));
+				userInput = userReader.nextLine();
 			}catch (NumberFormatException e){
 				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				userInput = userReader.nextLine();
 			}
 		}
 		userReader.close();
@@ -55,7 +57,7 @@ public class MultipleChoiceQuestion extends Question {
 		// TODO Part3
 		
 	}
-
+	@Override
 	protected void buildChoices(){
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
