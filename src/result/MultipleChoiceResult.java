@@ -1,15 +1,22 @@
 package result;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MultipleChoiceResult extends Result {
 
-	private String correctResult;
+	private List<Integer> result;
 	public MultipleChoiceResult() {
-		// TODO Auto-generated constructor stub
+		this.result = new ArrayList<Integer>();
+	}
+
+	public MultipleChoiceResult(List<Integer> capture) {
+		this.result = capture;
 	}
 
 	public boolean isCorrect(Result toCompare) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return (this.result.equals(toCompare));
 	}
 
 	public String ppResponse() {
@@ -17,18 +24,8 @@ public class MultipleChoiceResult extends Result {
 		return null;
 	}
 
-	@Override
-	public void acceptInput() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public String getCorrectResult() {
-		return correctResult;
-	}
-
-	public void setCorrectResult(String correctResult) {
-		this.correctResult = correctResult;
+	public List<Integer> getCorrectResult() {
+		return result;
 	}
 
 	@Override

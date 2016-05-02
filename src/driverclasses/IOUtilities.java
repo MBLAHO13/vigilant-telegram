@@ -50,14 +50,21 @@ public class IOUtilities {
 	//TODO: return status?
 	public static void spew(String contents, File f){
 		PrintWriter writer = null;
-		if(f.exists() && !f.isDirectory()) { 
-			//not sure if I want this to overwrite or preserve...
-		  System.err.println("[WARN] Overwriting file " + f.toString() );
+		try {
+			if(f.exists()) { 
+				//not sure if I want this to overwrite or preserve...
+			  System.err.println("[WARN] Overwriting file " + f.toString() );
+			} else{
+				f.createNewFile();
+			}
+		} catch (IOException e1) {
+			System.err.println("[ERROR] Failure to write to file, you'll probably lose work!");
+			e1.printStackTrace();
 		}
 		try {
 			writer = new PrintWriter(f, "UTF-8");
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-			System.err.println("Something's gone horribly wrong in Spew!");
+			System.err.println("[ERROR] Failure to write to file, you'll probably lose work!");
 			e.printStackTrace();
 		}
 		if (writer != null){
@@ -109,13 +116,13 @@ public class IOUtilities {
 		Scanner userScanner = safeScanner(System.in);
 		File f = null;
 		do {
+			System.out.println("Enter your filepath.");
+			System.out.println(":");
 			while (!userScanner.hasNext()) {
-				System.out.println("Enter your filepath.");
-				System.out.println(":");
 				userScanner.next();
 			}
 			f = new File(userScanner.nextLine());
-		} while (!f.canRead()); // is this a valid file?
+		} while (f != null); 
 		userScanner.close();
 		return f;
 	}

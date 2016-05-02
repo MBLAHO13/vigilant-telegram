@@ -1,8 +1,11 @@
 package question;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import result.Result;
+import driverclasses.IOUtilities;
+
+import result.*;
 
 
 
@@ -18,20 +21,11 @@ public class RankingQuestion extends Question {
 	 * c. Star Trek		3. ____
 	 * 
 	 */
-	protected ArrayList<String> leftChoices;
 
-	public RankingQuestion() {
-		// TODO Auto-generated constructor stub
-	}
+	public RankingQuestion() {}
 
 	@Override
 	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppDirections() {
 		// TODO Auto-generated method stub
 
 	}
@@ -41,37 +35,9 @@ public class RankingQuestion extends Question {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public boolean checkUserResponse() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void ppPrompt() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void reviseEntireQuestion() {
 		// TODO Part 3
-		
-	}
-
-	public ArrayList<String> getLeftChoices() {
-		return leftChoices;
-	}
-
-	public void setLeftChoices(ArrayList<String> leftChoices) {
-		this.leftChoices = leftChoices;
 	}
 
 	@Override
@@ -81,21 +47,20 @@ public class RankingQuestion extends Question {
 	}
 
 	@Override
-	public void ppQuestion() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean acceptInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Result> buildResult() {
-		// TODO Auto-generated method stub
-		return null;
+	public Result acceptInput() {
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		String userInput = userReader.nextLine();
+		List<Integer> choices = new ArrayList<Integer>();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+			try {
+				choices.add(Integer.parseInt(userInput.trim()));
+			}catch (NumberFormatException e){
+				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+			}
+		}
+		userReader.close();
+		return new RankingResult(choices);
 	}
 
 }

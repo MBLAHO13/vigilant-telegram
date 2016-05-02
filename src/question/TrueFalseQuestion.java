@@ -13,10 +13,4 @@ public class TrueFalseQuestion extends MultipleChoiceQuestion {
 
 	}
 
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

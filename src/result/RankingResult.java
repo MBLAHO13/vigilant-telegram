@@ -41,22 +41,6 @@ public class RankingResult extends Result {
 		return sb.toString();
 	}
 
-	@Override
-	public void acceptInput() {
-		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
-		String userInput = userReader.nextLine();
-		while(!userInput.equals(IOUtilities.SENTINEL)){
-			try {
-				this.userResponse.add(Integer.parseInt(userInput.trim()));
-			}catch (NumberFormatException e){
-				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
-			}
-		}
-		userReader.close();
-		
-	}
-
 	public List<Integer> getCorrectResponse() {
 		return userResponse;
 	}

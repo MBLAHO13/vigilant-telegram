@@ -33,12 +33,6 @@ public class MatchingResult extends RankingResult {
 	}
 
 	@Override
-	public void acceptInput() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void build() {
 		// TODO Auto-generated method stub
 		

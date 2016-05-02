@@ -15,7 +15,8 @@ public class Menu2 implements Menu {
 	
 	public Menu2(String specifier) {
 		this.specifier = specifier;
-		menu2 = Arrays.asList("Create a new " + specifier, "Display a " + specifier, "Load a " + specifier, "Save A " + specifier, "Back");
+		menu2 = Arrays.asList("Create a new " + specifier, "Display a " + specifier, "Load a " + specifier, "Save a " + specifier, "Take a " + specifier, "Back");
+				
 	}
 
 	@Override
@@ -33,7 +34,6 @@ public class Menu2 implements Menu {
 		        		questionnaire.ppQuestionnaire();
 		        	} else{
 		        		System.err.println("[ERROR] No questionnaire loaded. Load or create a " + specifier + ".");
-		        		return new State(this, questionnaire);
 		        	}
 		        	break;
 		        case 3: //Load a Questionnaire
@@ -48,16 +48,18 @@ public class Menu2 implements Menu {
 		        		questionnaire.saveQuestionnaire();
 		        	} else{
 		        		System.err.println("[ERROR] No questionnaire loaded. Load or create a " + specifier + ".");
-		        		return new State(this, questionnaire);
 		        	}
 		        	break;
-		        case 5: // Back
+		        case 5:
+		        	questionnaire.takeQuestionnaire();
+		        	break;
+		        case 6: // Back
 		        	return new State(new Menu1(),questionnaire);
 		        default:
-		        	System.err.println("[WARN] Bottom-out in Menu2.run(" + specifier +")");
+		        	System.err.println("[WARN] Bottom-out in Menu2.run(" + specifier +")"); // should never happen
 		    		break;
 		    }   
-		    return new State(this, questionnaire); // should never happen
+		    return new State(this, questionnaire); 
 	}
 
 }

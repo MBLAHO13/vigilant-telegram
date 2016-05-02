@@ -1,17 +1,13 @@
 package question;
 
+import result.Result;
+
 
 
 public class ShortAnswerQuestion extends EssayQuestion {
 	private int maxLength = 100; //whatever man
 	public ShortAnswerQuestion() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void ppDirections() {
-		// TODO Auto-generated method stub
-
 	}
 	
 	@Override
@@ -21,21 +17,9 @@ public class ShortAnswerQuestion extends EssayQuestion {
 	}
 
 	@Override
-	public boolean checkUserResponse() {
+	public Result acceptInput() {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean acceptInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userResponse;
 	}
 
 	public int getMaxLength() {

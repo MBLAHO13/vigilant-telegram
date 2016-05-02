@@ -1,6 +1,8 @@
 package question;
 import java.util.ArrayList;
 
+import result.Result;
+
 
 public class MatchingQuestion extends RankingQuestion {
 	
@@ -18,33 +20,15 @@ public class MatchingQuestion extends RankingQuestion {
 	}
 
 	@Override
-	public void ppDirections() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void ppUserInput() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean checkUserResponse() {
+	public Result acceptInput() {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean acceptInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userResponse;
 	}
 
 	@Override

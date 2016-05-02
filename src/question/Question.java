@@ -9,21 +9,23 @@ import result.Result;
 public abstract class Question {
 	private String prompt;
 	
-	private Result userResponse;
+	protected Result userResponse;
 	private String directions;
 	
 	// ppFoo == pretty print FOO
-	protected abstract void ppPrompt();
+	
 	protected abstract void ppAnswerChoices();
-	protected abstract void ppDirections();
 	public abstract void ppUserInput();
-	public abstract boolean checkUserResponse();
-	public abstract boolean acceptInput();
-	public abstract String sanitizer(String rawInput);
+
+	public abstract Result acceptInput();
 	public abstract void reviseEntireQuestion(); //and i mean it!
 	public abstract Question build();
-	public abstract List<Result> buildResult();
 	 
+	protected void ppPrompt(){
+		System.out.println(prompt);
+	}
+	
+	
 	public String getPrompt() {
 		return prompt;
 	}
@@ -50,8 +52,9 @@ public abstract class Question {
 	public void ppQuestion(){
 		this.ppPrompt();
 		this.ppAnswerChoices();
-		this.ppDirections();
 	}
 	
-	
+	public boolean checkUserResponse(Result correctResult){
+		return this.userResponse.isCorrect(correctResult);
+	}
 }

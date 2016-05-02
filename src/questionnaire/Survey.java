@@ -79,7 +79,6 @@ public class Survey {
 
 	public void editQuestionnaire() {
 		// TODO Part3
-		
 	}
 
 	
@@ -91,6 +90,7 @@ public class Survey {
 		Scanner scanner = IOUtilities.safeScanner(System.in);
 		
 		File f = new File("Storage" + System.getProperty("file.separator") + scanner.nextLine() + (new Date()).getTime());
+		
 		IOUtilities.spew(IOUtilities.serialize(this), f);
 	}
 
@@ -102,7 +102,7 @@ public class Survey {
 		}
 		for(Question q : questionList){
 			q.ppQuestion();
-			q.acceptInput();
+			q.setUserResponse(q.acceptInput());
 		}
 		
 	}

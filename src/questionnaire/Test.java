@@ -7,6 +7,7 @@ import java.util.Map;
 import driverclasses.IOUtilities;
 import question.Question;
 import result.Result;
+import result.TrueFalseResult;
 
 
 public class Test extends Survey { //for once, "test" is a final name...
@@ -25,20 +26,23 @@ public class Test extends Survey { //for once, "test" is a final name...
 	
 	public static Survey createQuestionnaire() {
 		Test newTest = new Test();
-		int doAnother; 
+		int doAnotherQuestion; 
+		List<Result> validResponses = new ArrayList<Result>();
 		do {
 			Question newQuestion = newTest.addQuestion();
-			newTest.question2Responses.put(newQuestion, newQuestion.buildResult());
-			doAnother = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
-		} while (doAnother != 2); //signifies "Add a new question: no"
+			System.out.println("Add another correct answer?");
+			int doAnotherResponse;
+			do {
+				validResponses.add(newQuestion.acceptInput());
+				doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
+			}while (doAnotherResponse !=2);
+			newTest.question2Responses.put(newQuestion, validResponses);
+			System.out.println("Add another question?");
+			doAnotherQuestion = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
+		} while (doAnotherQuestion != 2); //signifies "Add a new question: no"
 		return newTest;
 
 		
-	}
-
-	private List<Result> addResult() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
