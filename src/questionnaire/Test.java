@@ -31,20 +31,26 @@ public class Test extends Survey { //for once, "test" is a final name...
 		List<Result> validResponses = new ArrayList<Result>();
 		do {
 			Question newQuestion = newTest.addQuestion();
-			
-			int doAnotherResponse;
-			do {
-				validResponses.add(newQuestion.acceptInput());
-				System.out.println("Add another correct answer?");
-				doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM);
-			}while (doAnotherResponse !=2);
-			newTest.question2Responses.put(newQuestion, validResponses);
-			System.out.println("Add another question?");
-			doAnotherQuestion = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
+			if (newQuestion != null){
+				int doAnotherResponse;
+				do {
+					validResponses.add(newQuestion.acceptInput());
+					System.out.println("Add another correct answer?");
+					doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM);
+				}while (doAnotherResponse !=2);
+				newTest.question2Responses.put(newQuestion, validResponses);
+				newTest.questionList.add(newQuestion);
+				System.out.println("Add another question?");
+				doAnotherQuestion = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
+			} else{
+				doAnotherQuestion = 2;
+			}
 		} while (doAnotherQuestion != 2); //signifies "Add a new question: no"
+		if(newTest.questionList.isEmpty()){
+			System.out.println("Question list is empty");
+			return null;
+		}
 		return newTest;
-
-		
 	}
 
 	@Override

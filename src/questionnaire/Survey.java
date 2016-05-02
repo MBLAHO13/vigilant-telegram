@@ -44,6 +44,9 @@ public class Survey {
 				doAnother = 2; //signifies "Add a new question: no" because they've selected "back" or something broke
 			}
 		} while (doAnother != 2); //signifies "Add a new question: no"
+		if(newSurvey.getQuestionList().isEmpty()){
+			return null;
+		}
 		return newSurvey;
 	}
 
