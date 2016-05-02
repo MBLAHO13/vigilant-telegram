@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -123,5 +124,18 @@ public class IOUtilities {
 		path = userScanner.nextLine();
 		userScanner.close();
 		return path;
+	}
+	
+	public static String chooseFile(){
+		File folder = new File("./Storage");
+		File[] listOfFiles = folder.listFiles();
+		List<String> fileChoices= new ArrayList<String>();
+		for (File file : listOfFiles) {
+		    if (file.isFile()) {
+		        fileChoices.add(file.getName());
+		    }
+		}
+		int userFileChoice = choices(fileChoices) - 1; //get file choice, and then array index it
+		return listOfFiles[userFileChoice].getName();
 	}
 }

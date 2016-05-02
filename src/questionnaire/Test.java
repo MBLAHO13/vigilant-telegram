@@ -60,7 +60,7 @@ public class Test extends Survey { //for once, "test" is a final name...
 	}
 	
 	public static Survey loadQuestionnaire() {
-		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename())), Test.class));
+		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.chooseFile())), Test.class));
 	}
 	
 	public double scoreQuestionnaire(){

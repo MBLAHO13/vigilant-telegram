@@ -87,7 +87,7 @@ public class Survey {
 
 	
 	public static Survey loadQuestionnaire() {
-		return (Survey) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename())), Survey.class));
+		return (Survey) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.chooseFile())), Survey.class));
 	}
 	
 	public void saveQuestionnaire(){		
