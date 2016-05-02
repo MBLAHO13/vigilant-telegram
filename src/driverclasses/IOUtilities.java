@@ -18,13 +18,15 @@ public class IOUtilities {
 	public static final List<String> CONFIRM = Arrays.asList("Yes", "No");
 
 	public static String serialize(Object obj){
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
+			       .create();;
 		return gson.toJson(obj);
 	}
 	
 	// to create a FOO, pass in FOO.class as targetClass!
 	public static Object deserialize(String slurp, Class<?> targetClass){ //this needs to be cast properly on the other end
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
+			       .create();
 		return gson.fromJson(slurp, targetClass);   
 	}
 	

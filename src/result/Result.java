@@ -1,12 +1,20 @@
 package result;
 
-public abstract class Result implements Cloneable{
+public class Result implements Cloneable{
 	public Result() {}
 	
-	public abstract boolean isCorrect(Result toCompare);
+	public boolean isCorrect(Result toCompare){
+		return false;
+		
+	}
 	//returns string because we don't know who's printing
-	public abstract String ppResponse();
+	public String ppResponse(){
+		return null;
+		
+	}
 	
-	public abstract void build(); //TODO: this vs Constructor?
+	public void build(){
+		//TODO: this vs Constructor?
+	}
 
 }
