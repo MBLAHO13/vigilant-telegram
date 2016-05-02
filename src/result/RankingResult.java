@@ -51,7 +51,7 @@ public class RankingResult extends Result {
 
 	@Override
 	public void build() {
-		// TODO Part2
+		// TODO not sure if I need this
 		
 	}
 

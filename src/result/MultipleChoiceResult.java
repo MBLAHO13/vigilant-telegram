@@ -20,7 +20,7 @@ public class MultipleChoiceResult extends Result {
 	}
 
 	public String ppResponse() {
-		// TODO Auto-generated method stub
+		// TODO part 3
 		return null;
 	}
 
@@ -30,7 +30,7 @@ public class MultipleChoiceResult extends Result {
 
 	@Override
 	public void build() {
-		// TODO Auto-generated method stub
+		// TODO not sure if i need this...
 		
 	}
 

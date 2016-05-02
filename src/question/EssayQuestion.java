@@ -1,17 +1,12 @@
 package question;
-
-import java.util.List;
 import java.util.Scanner;
-
 import driverclasses.IOUtilities;
-
 import result.*;
 
 public class EssayQuestion extends Question {
 	//no answer choices needed
 
-	public EssayQuestion() {
-	}
+	public EssayQuestion() {}
 
 	@Override
 	public void ppUserInput() {
@@ -37,22 +32,15 @@ public class EssayQuestion extends Question {
 	public void reviseEntireQuestion() {
 		// TODO Part3
 		
-	}
-
-	@Override
-	public Question build() {
-		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Your question or " + IOUtilities.SENTINEL + " on it's own line to quit.");
-		String userInput = userReader.nextLine();
-		if (userInput.equals(IOUtilities.SENTINEL)){ return null;	} //we decided against making a question
-		this.setPrompt(userInput);
-		System.out.println("No choices to input for type Essay.\n");
-		return this;
-	}
+	}	
 
 	@Override
 	protected void ppAnswerChoices() {
-		return;
+		System.out.println("(No answer choices for essays)");
+	}
+	
+	protected void buildChoices(){
+		System.out.println("No choices to input for type Essay.\n");
 	}
 
 

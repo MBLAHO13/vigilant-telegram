@@ -1,30 +1,54 @@
 package question;
 import java.util.List;
+import java.util.Scanner;
+
+import driverclasses.IOUtilities;
 
 import result.Result;
 
 
 
-
-public abstract class Question {
+// Because of GSON, this CANNOT BE ABSTRACT
+// Based on design principles, this should be abstract for code reuse.
+// However, my options are A) make this abstract B) make a custom adapter
+// Utility of GSON >>> having the prettiest code
+// TODO: Part 3, rework this so it's less of a
+public class Question {
 	private String prompt;
-	
 	protected Result userResponse;
 	private String directions;
-	
 	// ppFoo == pretty print FOO
 	
-	protected abstract void ppAnswerChoices();
-	public abstract void ppUserInput();
+	// ----- SHOULD BE ABSTRACT -------
+	protected void ppAnswerChoices() {
+	}
+	public void ppUserInput() {
+	}
+	
+	private void buildChoices(){
+		
+	}
 
-	public abstract Result acceptInput();
-	public abstract void reviseEntireQuestion(); //and i mean it!
-	public abstract Question build();
+	public Result acceptInput() {
+		return null;
+	}
+	public void reviseEntireQuestion() {
+	} //and i mean it!
+	// ----- SHOULD BE ABSTRACT -------
+	
+	
+	public Question build() {
+		if(buildPrompt() == null){ return null;} // attempt to build , if it bombs out, bomb out
+		this.buildChoices();
+		return this;
+	}
 	 
+	public Question(){
+		
+	}
 	protected void ppPrompt(){
 		System.out.println(prompt);
 	}
-	
 	
 	public String getPrompt() {
 		return prompt;
@@ -56,5 +80,14 @@ public abstract class Question {
 	
 	public boolean checkUserResponse(Result correctResult){
 		return this.userResponse.isCorrect(correctResult);
+	}
+	
+	public Question buildPrompt(){
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Your question or " + IOUtilities.SENTINEL + " on it's own line to quit.");
+		String userInput = userReader.nextLine();
+		if (userInput.equals(IOUtilities.SENTINEL)){ return null;	} //we decided against making a question
+		this.setPrompt(userInput);
+		return this;
 	}
 }

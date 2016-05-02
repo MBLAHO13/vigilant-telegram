@@ -15,6 +15,10 @@ public class MatchingResult extends RankingResult {
 		this.correctResponse = userResponse;
 	}
 
+	public MatchingResult(List<Integer> choices) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public boolean isCorrect(Result toCompare) {
 		// TODO Part 3

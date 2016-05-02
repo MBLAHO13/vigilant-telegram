@@ -10,7 +10,7 @@ import result.*;
 
 
 
-public class RankingQuestion extends Question {
+public class RankingQuestion extends MatchingQuestion {
 	//two columns, rightChoices is a series of numbers
 	/*
 	 * 
@@ -21,13 +21,9 @@ public class RankingQuestion extends Question {
 	 * c. Star Trek		3. ____
 	 * 
 	 */
-
-	public RankingQuestion() {}
-
-	@Override
-	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
+	
+	public RankingQuestion() {
+		super();
 	}
 
 	@Override
@@ -40,12 +36,13 @@ public class RankingQuestion extends Question {
 		// TODO Part 3
 	}
 
-	@Override
-	public Question build() {
-		// TODO Auto-generated method stub
-		return null;
+	protected void buildChoices(){
+		buildLeftChoices();
+		for (int i = 0; i < leftChoices.size(); i++){
+			this.rightChoices.add(i + ""); //i just want it to be a string :(
+		}
+		return;
 	}
-
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);

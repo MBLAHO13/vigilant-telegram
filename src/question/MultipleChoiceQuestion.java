@@ -12,30 +12,31 @@ import result.*;
 
 public class MultipleChoiceQuestion extends Question {
 	//will also be used for T/F, seeing as a true false question is simply a 2-choice question, multiple choice is n-choice
-	
+	List<String> options;
 	public MultipleChoiceQuestion() {
+		options = new ArrayList<String>();
 	}
 	
 	public MultipleChoiceQuestion(List<String> choices) {
-		
+		this.options = choices;
 	}
 
 	@Override
 	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
+		for (int i = 1; i < options.size()+1; i++){
+			System.out.println(i + ") " + options.get(i-1));
+		}
 	}
 
 	@Override
 	public void ppUserInput() {
-		// TODO Auto-generated method stub
-
+		// TODO Part3
 	}
 
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		System.out.println("Enter your choice(s), each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
 		List<Integer> capture = new ArrayList<Integer>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
@@ -55,10 +56,16 @@ public class MultipleChoiceQuestion extends Question {
 		
 	}
 
-	@Override
-	public Question build() {
-		// TODO Auto-generated method stub
-		return null;
+	protected void buildChoices(){
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
+		String userInput = userReader.nextLine();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+			this.options.add(userInput);
+			userInput = userReader.nextLine();
+		}
+		userReader.close();
+		//store user's input as a result object for later
+		
 	}
-
 }
