@@ -2,9 +2,7 @@ package questionnaire;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 import driverclasses.IOUtilities;
 
@@ -91,7 +89,7 @@ public class Survey {
 	}
 	
 	public void saveQuestionnaire(){		
-		File f = new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename());
+		File f = new File("./Storage" + System.getProperty("file.separator") + IOUtilities.recieveFilename(System.in));
 		IOUtilities.spew(IOUtilities.serialize(this), f);
 	}
 

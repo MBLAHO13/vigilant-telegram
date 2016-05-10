@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,8 +27,8 @@ public class IOUtilities {
 	
 	// to create a FOO, pass in FOO.class as targetClass!
 	public static Object deserialize(String slurp, Class<?> targetClass){ //this needs to be cast properly on the other end
-		Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
-			       .create();
+		//magic switch to make sure all my maps, arraylists, etc all get serialized right
+		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		return gson.fromJson(slurp, targetClass);   
 	}
 	
@@ -64,13 +65,13 @@ public class IOUtilities {
 			}
 		} catch (IOException e1) {
 			System.err.println("[ERROR] Failure to write to file, you'll probably lose work!");
-			e1.printStackTrace();
+			errorReporter(e1);
 		}
 		try {
 			writer = new PrintWriter(f, "UTF-8");
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			System.err.println("[ERROR] Failure to write to file, you'll probably lose work!");
-			e.printStackTrace();
+			errorReporter(e);
 		}
 		if (writer != null){
 			writer.write(contents);
@@ -105,20 +106,24 @@ public class IOUtilities {
 		return choicemenu;
 	}
 	
+	/**
+	 * Apparently if you close a scanner attached to STDIN it nukes STDIN. Java.
+	 *	This empty method keeps STDIN open for future scanners.
+	 * The `throws` will be caught by the black hole in main.
+	 * 
+	 * @param in
+	 * @return new (better) scanner pointed at in
+	 */
 	public static Scanner safeScanner(InputStream in){
 		Scanner betterScanner = new Scanner(new FilterInputStream(in) {
 		    @Override
-		    public void close() throws IOException {
-		        // Apparently if you close a scanner attached to STDIN it nukes STDIN. Java.
-		    	// This empty method keeps STDIN open for future scanners.
-		    	// The `throws` will be caught by the black hole in main.
-		    }
+		    public void close() throws IOException {}
 		});
 		return betterScanner;
 	}
 
-	public static String recieveFilename(){
-		Scanner userScanner = safeScanner(System.in);
+	public static String recieveFilename(InputStream in){
+		Scanner userScanner = safeScanner(in);
 		String path;
 		System.out.println("File name: ");
 		path = userScanner.nextLine();
@@ -137,5 +142,9 @@ public class IOUtilities {
 		}
 		int userFileChoice = choices(fileChoices) - 1; //get file choice, and then array index it
 		return listOfFiles[userFileChoice].getName();
+	}
+	public static void errorReporter(Throwable thrown){
+		System.err.println("[ERROR]  " + thrown.toString() + "thrown, something bad happened!");
+		IOUtilities.spew(thrown.toString() + "\n" + Arrays.toString(thrown.getStackTrace()), new File("Dumps" + System.getProperty("file.separator") + "error" + (new Date()).getTime())); //output stacktrace to file for review
 	}
 }

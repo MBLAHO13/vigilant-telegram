@@ -1,4 +1,5 @@
 package questionnaire;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +9,6 @@ import java.util.Map;
 import driverclasses.IOUtilities;
 import question.Question;
 import result.Result;
-import result.TrueFalseResult;
 
 
 public class Test extends Survey { //for once, "test" is a final name...

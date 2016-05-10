@@ -6,7 +6,6 @@ import java.util.Scanner;
 import driverclasses.IOUtilities;
 
 import result.MatchingResult;
-import result.RankingResult;
 import result.Result;
 
 

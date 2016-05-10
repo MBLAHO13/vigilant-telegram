@@ -1,9 +1,6 @@
 package question;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
 import driverclasses.IOUtilities;
 import result.Result;
 import result.ShortAnswerResult;

@@ -1,11 +1,8 @@
 package question;
-import java.util.List;
+
 import java.util.Scanner;
-
 import driverclasses.IOUtilities;
-
 import result.Result;
-
 
 
 // Because of GSON, this CANNOT BE ABSTRACT
