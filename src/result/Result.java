@@ -1,13 +1,20 @@
 package result;
 
-public abstract class Result {
-
-	public Result() {
-		// TODO Auto-generated constructor stub
+public class Result implements Cloneable{
+	public Result() {}
+	
+	public boolean isCorrect(Result toCompare){
+		return false;
+		
+	}
+	//returns string because we don't know who's printing
+	public String ppResponse(){
+		return null;
+		
 	}
 	
-	public abstract boolean isCorrect(Result toCompare);
-	public abstract String ppResponse();
-	public abstract void acceptInput();
-	public abstract void build();
+	public void build(){
+		//TODO: this vs Constructor?
+	}
+
 }

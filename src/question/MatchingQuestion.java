@@ -1,64 +1,98 @@
 package question;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import driverclasses.IOUtilities;
+
+import result.MatchingResult;
+import result.Result;
 
 
-public class MatchingQuestion extends RankingQuestion {
+public class MatchingQuestion extends Question {
 	
 	//two columns
-	private ArrayList<String> rightChoices; 
+	protected List<String> rightChoices; 
+	protected List<String>leftChoices;
 
 	public MatchingQuestion() {
-		// TODO Auto-generated constructor stub
+		this.leftChoices = new ArrayList<String>();
+		this.rightChoices = new ArrayList<String>();
 	}
 
 	@Override
 	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppDirections() {
-		// TODO Auto-generated method stub
-
+		for(int i = 0; i < leftChoices.size(); i++){
+			System.out.println(i + ") " + leftChoices.get(i) + "\t" + i + "] " + rightChoices.get(i));
+		}
 	}
 
 	@Override
 	public void ppUserInput() {
-		// TODO Auto-generated method stub
-
+		// TODO Part 3
 	}
 
 	@Override
-	public boolean checkUserResponse() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean parseUserInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result acceptInput() {
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Enter your choices, each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		String userInput = userReader.nextLine();
+		List<Integer> choices = new ArrayList<Integer>();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+			try {
+				choices.add(Integer.parseInt(userInput.trim()));
+				userInput = userReader.nextLine();
+			}catch (NumberFormatException e){
+				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				userInput = userReader.nextLine();
+			}
+		}
+		userReader.close();
+		return new MatchingResult(choices);
 	}
 
 	@Override
 	public void reviseEntireQuestion() {
-		// TODO Auto-generated method stub
+		// TODO Part3
 		
 	}
 
-	public ArrayList<String> getRightChoices() {
+	public List<String> getRightChoices() {
 		return rightChoices;
+	}
+	protected void buildChoices(){
+		buildLeftChoices();
+		buildRightChoices();
 	}
 
 	public void setRightChoices(ArrayList<String> rightChoices) {
 		this.rightChoices = rightChoices;
 	}
 
+	protected void buildLeftChoices(){
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Enter your left-hand choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		String userInput = userReader.nextLine();
+		List<String> choices = new ArrayList<String>();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+				choices.add(userInput.trim());
+				userInput = userReader.nextLine();
+		}
+		userReader.close();
+		this.leftChoices = choices;
+	}
+	
+	protected void buildRightChoices(){
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Enter your right-hand choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		String userInput = userReader.nextLine();
+		List<String> choices = new ArrayList<String>();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+				choices.add(userInput.trim());
+				userInput = userReader.nextLine();
+		}
+		userReader.close();
+		this.rightChoices = choices;
+	}
+	
 }

@@ -13,7 +13,8 @@ public class TrueFalseResult extends MultipleChoiceResult {
 	}
 	@Override
 	public void build() {
-		// TODO Auto-generated method stub
+		//TODO not sure if I need this
+		System.out.println();
 		
 	}
 

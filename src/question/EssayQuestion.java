@@ -1,63 +1,41 @@
 package question;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import driverclasses.IOUtilities;
+import result.*;
 
-public class EssayQuestion extends Question {
+public class EssayQuestion extends ShortAnswerQuestion {
 	//no answer choices needed
-	public EssayQuestion() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public EssayQuestion() {}
 
 	@Override
-	public void ppPrompt() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppDirections() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppUserInput() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean checkUserResponse() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean parseUserInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result acceptInput() {
+			Scanner userReader = IOUtilities.safeScanner(System.in);
+			System.out.println("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
+			StringBuilder sb = new StringBuilder();
+			String userInput = userReader.nextLine();
+			while(!userInput.equals(IOUtilities.SENTINEL)){
+				sb.append(userInput);
+				userInput = userReader.nextLine();
+			}
+			userReader.close();
+			//store user's input as a result object for later
+			return new EssayResult(sb.toString());
 	}
 
 	@Override
 	public void reviseEntireQuestion() {
-		// TODO Auto-generated method stub
+		// TODO Part3
 		
+	}	
+	
+	@Override
+	public List<Result> buildCorrectResponseList(){
+		return new ArrayList<Result>();
 	}
 
-	@Override
-	public Question build() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

@@ -1,43 +1,57 @@
 package result;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import driverclasses.IOUtilities;
 
 
 public class RankingResult extends Result {
 
-	private List<Integer> correctResponse;
+	private List<Integer> userResponse;
 	public RankingResult() {
-		// TODO Auto-generated constructor stub
+		this.userResponse = new ArrayList<Integer>();
+	}
+	
+	public RankingResult(List<Integer> userInput){
+		this.userResponse = userInput;
+	}
+	
+	public RankingResult(int[] userInput){
+		for (int i = 0; i < userInput.length; i++)
+		{
+		    this.userResponse.add(userInput[i]);
+		}
 	}
 
 	@Override
 	public boolean isCorrect(Result toCompare) {
-		// TODO Auto-generated method stub
+		// TODO Part 3
 		return false;
 	}
 
 	@Override
 	public String ppResponse() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void acceptInput() {
-		// TODO Auto-generated method stub
-		
+		StringBuilder sb = new StringBuilder();
+		for (Integer s : this.userResponse)
+		{
+		    sb.append(s);
+		    sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 	public List<Integer> getCorrectResponse() {
-		return correctResponse;
+		return userResponse;
 	}
 
 	public void setCorrectResponse(List<Integer> correctResponse) {
-		this.correctResponse = correctResponse;
+		this.userResponse = correctResponse;
 	}
 
 	@Override
 	public void build() {
-		// TODO Auto-generated method stub
+		// TODO not sure if I need this
 		
 	}
 

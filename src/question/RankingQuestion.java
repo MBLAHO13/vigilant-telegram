@@ -1,10 +1,16 @@
 package question;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import driverclasses.IOUtilities;
+
+import result.*;
 
 
 
 
-public class RankingQuestion extends Question {
+public class RankingQuestion extends MatchingQuestion {
 	//two columns, rightChoices is a series of numbers
 	/*
 	 * 
@@ -15,22 +21,9 @@ public class RankingQuestion extends Question {
 	 * c. Star Trek		3. ____
 	 * 
 	 */
-	protected ArrayList<String> leftChoices;
-
+	
 	public RankingQuestion() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ppDirections() {
-		// TODO Auto-generated method stub
-
+		super();
 	}
 
 	@Override
@@ -38,49 +31,33 @@ public class RankingQuestion extends Question {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public boolean checkUserResponse() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean parseUserInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void ppPrompt() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void reviseEntireQuestion() {
-		// TODO Auto-generated method stub
-		
+		// TODO Part 3
 	}
-
-	public ArrayList<String> getLeftChoices() {
-		return leftChoices;
+	
+	protected void buildRightChoices(){
+		for (int i = 0; i < leftChoices.size(); i++){
+			this.rightChoices.add(i + ""); //i just want it to be a string :(
+		}
 	}
-
-	public void setLeftChoices(ArrayList<String> leftChoices) {
-		this.leftChoices = leftChoices;
-	}
-
 	@Override
-	public Question build() {
-		// TODO Auto-generated method stub
-		return null;
+	public Result acceptInput() {
+		Scanner userReader = IOUtilities.safeScanner(System.in);
+		System.out.println("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		String userInput = userReader.nextLine();
+		List<Integer> choices = new ArrayList<Integer>();
+		while(!userInput.equals(IOUtilities.SENTINEL)){
+			try {
+				choices.add(Integer.parseInt(userInput.trim()));
+				userInput = userReader.nextLine();
+			}catch (NumberFormatException e){
+				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				userInput= userReader.nextLine();
+			}
+		}
+		userReader.close();
+		return new RankingResult(choices);
 	}
 
 }

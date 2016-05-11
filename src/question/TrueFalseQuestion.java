@@ -1,22 +1,17 @@
 package question;
 
+import java.util.Arrays;
+
 
 
 public class TrueFalseQuestion extends MultipleChoiceQuestion {
 	public TrueFalseQuestion() {
-		// TODO Auto-generated constructor stub
-		//call super with two arguments
+		super(Arrays.asList("True", "False"));
 	}
 	@Override
-	public void ppAnswerChoices() {
-		// TODO Auto-generated method stub
-
+	public Question build(){
+		//skip building choices
+		if(this.buildPrompt() == null){ return null;}
+		return this;
 	}
-
-	@Override
-	public String sanitizer(String rawInput) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

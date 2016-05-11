@@ -1,8 +1,6 @@
 package driverclasses;
 import java.util.Arrays;
 
-import com.google.gson.Gson;
-
 class BagOfPrimitives2 {
 	  @SuppressWarnings("unused")
 	private int value1 = 8;
@@ -46,12 +44,10 @@ public class TesterForGson {
 	 * @param args
 	 */
 	public static void TesterForGSON(String[] args) {
-		// TODO Auto-generated method stub
 		BagOfPrimitives obj = new BagOfPrimitives();
-		Gson gson = new Gson();
-		String json = gson.toJson(obj);  
+		String json = IOUtilities.serialize(obj);  
 		System.out.printf(json);
-		BagOfPrimitives obj2 = gson.fromJson(json, BagOfPrimitives.class);   
+		BagOfPrimitives obj2 = (BagOfPrimitives) IOUtilities.deserialize(json, BagOfPrimitives.class);   
 		obj2.getBagOfInts();
 		obj2.getBagOfInts2();
 	}
