@@ -1,5 +1,7 @@
 package question;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import driverclasses.IOUtilities;
 import result.Result;
@@ -86,5 +88,16 @@ public class Question {
 		if (userInput.equals(IOUtilities.SENTINEL)){ return null;	} //we decided against making a question
 		this.setPrompt(userInput);
 		return this;
+	}
+	
+	public List<Result> buildCorrectResponseList(){
+		List<Result> validResponses = new ArrayList<Result>();
+		int doAnotherResponse;
+		do {
+			validResponses.add(this.acceptInput());
+			System.out.println("Add another correct answer?");
+			doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM);
+		}while (doAnotherResponse !=2);
+		return validResponses;
 	}
 }

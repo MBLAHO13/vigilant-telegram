@@ -28,16 +28,11 @@ public class Test extends Survey { //for once, "test" is a final name...
 	public static Survey createQuestionnaire() {
 		Test newTest = new Test();
 		int doAnotherQuestion; 
-		List<Result> validResponses = new ArrayList<Result>();
+		List<Result> validResponses;
 		do {
 			Question newQuestion = newTest.addQuestion();
 			if (newQuestion != null){
-				int doAnotherResponse;
-				do {
-					validResponses.add(newQuestion.acceptInput());
-					System.out.println("Add another correct answer?");
-					doAnotherResponse = IOUtilities.choices(IOUtilities.CONFIRM);
-				}while (doAnotherResponse !=2);
+				validResponses = newQuestion.buildCorrectResponseList();
 				newTest.question2Responses.put(newQuestion, validResponses);
 				newTest.questionList.add(newQuestion);
 				System.out.println("Add another question?");

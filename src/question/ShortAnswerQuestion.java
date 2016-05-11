@@ -7,10 +7,15 @@ import result.ShortAnswerResult;
 
 
 
-public class ShortAnswerQuestion extends EssayQuestion {
+public class ShortAnswerQuestion extends Question {
 	private int maxLength = 1000; //whatever man
 	public ShortAnswerQuestion() {	}
 
+	@Override
+	public void ppUserInput() {
+		System.out.println(this.userResponse.ppResponse());
+	}
+	
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
@@ -32,8 +37,15 @@ public class ShortAnswerQuestion extends EssayQuestion {
 
 	public void setMaxLength(int maxLength) {
 		this.maxLength = maxLength;
-	
 	}
 	
+	@Override
+	protected void ppAnswerChoices() {
+		System.out.println("(No answer choices for free response)");
+	}
+	
+	protected void buildChoices(){
+		System.out.println("No choices to input for free response.\n");
+	}
 
 }

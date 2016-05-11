@@ -1,17 +1,14 @@
 package question;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import driverclasses.IOUtilities;
 import result.*;
 
-public class EssayQuestion extends Question {
+public class EssayQuestion extends ShortAnswerQuestion {
 	//no answer choices needed
 
 	public EssayQuestion() {}
-
-	@Override
-	public void ppUserInput() {
-		System.out.println(this.userResponse.ppResponse());
-	}
 
 	@Override
 	public Result acceptInput() {
@@ -33,15 +30,12 @@ public class EssayQuestion extends Question {
 		// TODO Part3
 		
 	}	
-
-	@Override
-	protected void ppAnswerChoices() {
-		System.out.println("(No answer choices for free response)");
-	}
 	
-	protected void buildChoices(){
-		System.out.println("No choices to input for free response.\n");
+	@Override
+	public List<Result> buildCorrectResponseList(){
+		return new ArrayList<Result>();
 	}
+
 
 
 }
