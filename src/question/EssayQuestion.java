@@ -33,6 +33,7 @@ public class EssayQuestion extends ShortAnswerQuestion {
 	
 	@Override
 	public List<Result> buildCorrectResponseList(){
+		System.out.println("No correct answer for Essay questions.");
 		return new ArrayList<Result>();
 	}
 

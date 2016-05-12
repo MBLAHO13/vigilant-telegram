@@ -100,4 +100,12 @@ public class Question {
 		}while (doAnotherResponse !=2);
 		return validResponses;
 	}
+
+	public String ppResult(){
+		if (userResponse != null){
+			return userResponse.ppResponse();
+		}else{
+			return null;
+		}
+	}
 }

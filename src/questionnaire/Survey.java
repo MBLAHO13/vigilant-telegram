@@ -2,15 +2,18 @@ package questionnaire;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import driverclasses.IOUtilities;
 
 import question.*;
+import result.Result;
 
 public class Survey {
 	
-	protected List<Question> questionList;
+	protected Map<Question, List<Result>> question2Responses;
 	//TODO part 3 (do I like this format?)
 	protected List<String> reportData; //raw report data
 	protected List<String> options = Arrays.asList("Add a new T/F question", "Add a new Multiple Choice question", 
@@ -19,12 +22,12 @@ public class Survey {
 
 
 	public Survey() {
-		this.questionList = new ArrayList<Question>();
+		this.question2Responses = new LinkedHashMap<Question, List<Result>>();
 		this.reportData = new ArrayList<String>();
 	}
 	
-	public Survey(List<Question> questionList) {
-		this.questionList = questionList;
+	public Survey(Map<Question, List<Result>> questionList) {
+		this.question2Responses = questionList;
 		this.reportData = new ArrayList<String>();
 	}
 
@@ -35,7 +38,7 @@ public class Survey {
 		do {
 			Question newQuestion = newSurvey.addQuestion();
 			if (newQuestion != null){
-				newSurvey.questionList.add(newQuestion);
+				newSurvey.question2Responses.put(newQuestion, null); //we add null because this is a survey. no correct answer.
 				System.out.println("Add another Question?");
 				doAnother = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
 			} else{
@@ -95,11 +98,11 @@ public class Survey {
 
 	
 	public void takeQuestionnaire() {
-		if (this.questionList.isEmpty()){
+		if (this.question2Responses.isEmpty()){
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
-		for(Question q : questionList){
+		for(Question q : this.question2Responses.keySet()){
 			q.ppQuestion();
 			q.setUserResponse(q.acceptInput());
 		}
@@ -112,11 +115,11 @@ public class Survey {
 	}
 	
 	public void ppQuestionnaire(){
-		if (this.questionList.isEmpty() || this.questionList == null){
+		if (this.question2Responses.isEmpty() || this.question2Responses == null){
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
-		for(Question q : questionList){
+		for(Question q : this.question2Responses.keySet()){
 			if (q == null){
 				System.err.println("Question is null!");
 				return;
@@ -126,6 +129,8 @@ public class Survey {
 	}
 
 	public List<Question> getQuestionList() {
-		return questionList;
+		//thankfully, ArrayList has a constructor that takes in a Set<Object>
+		// see http://stackoverflow.com/a/1026736
+		return new ArrayList<Question>(question2Responses.keySet());
 	}
 }

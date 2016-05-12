@@ -1,9 +1,5 @@
 package result;
 
-import java.util.Scanner;
-
-import driverclasses.IOUtilities;
-
 public class EssayResult extends Result {
 	protected String userResponse;
 	public EssayResult() {
