@@ -15,7 +15,6 @@ import result.Result;
 public class Question {
 	private String prompt;
 	protected Result userResponse;
-	private String directions;
 	// ppFoo == pretty print FOO
 	
 	// ----- SHOULD BE ABSTRACT -------
@@ -36,15 +35,9 @@ public class Question {
 	public Result acceptInput() {
 		throw new UnsupportedOperationException("Do not call Question.acceptInput().");
 	}
-	
-	private void changeChoices() {
-		// TODO Auto-generated method stub
-		//Override me!
-	}
 	// ----- SHOULD BE ABSTRACT -------
 	
 	public void reviseEntireQuestion() {
-		
 		//We can do this one UNIX-style, so it's less stupid.
 		System.out.println("Type your new prompt or hit enter to keep the old input.");
 		Scanner safeScanner = IOUtilities.safeScanner(System.in);
@@ -58,24 +51,12 @@ public class Question {
 		System.out.println("Change Answer Choices?");
 		switch(IOUtilities.choices(IOUtilities.CONFIRM)){
 			case 1:
-				this.changeChoices();
-				break;
-			case 2:
-				break;
-		}
-		System.out.println("Change Correct Answers?");
-		switch(IOUtilities.choices(IOUtilities.CONFIRM)){
-			case 1:
-				this.changeCorrectResponseList();
+				//set new answer choices
 				break;
 			case 2:
 				break;
 		}
 	} //and i mean it!
-	private void changeCorrectResponseList() {
-		// TODO Auto-generated method stub
-		//Override me!
-	}
 	public Question build(){
 		if(buildPrompt() == null){ return null;} // attempt to build , if it bombs out, bomb out
 		buildChoices();
@@ -105,12 +86,6 @@ public class Question {
 	public void setUserResponse(Result userResponse) {
 		this.userResponse = userResponse;
 	}
-	public String getDirections() {
-		return directions;
-	}
-	public void setDirections(String directions) {
-		this.directions = directions;
-	}
 	
 	public void ppQuestion(){
 		ppPrompt();
@@ -131,6 +106,7 @@ public class Question {
 	}
 	
 	public List<Result> buildCorrectResponseList(){
+		System.out.println("Input your choices one on each line, or " + IOUtilities.SENTINEL + " to quit.");
 		List<Result> validResponses = new ArrayList<Result>();
 		int doAnotherResponse;
 		do {

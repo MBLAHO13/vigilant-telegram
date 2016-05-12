@@ -83,7 +83,9 @@ public class Survey {
 	}
 
 	public void editQuestionnaire() {
-		// TODO Part3
+		for (Question q : question2Responses.keySet()){
+			q.reviseEntireQuestion();
+		}
 	}
 
 	

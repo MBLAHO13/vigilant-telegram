@@ -46,8 +46,19 @@ public class Test extends Survey { //for once, "test" is a final name...
 
 	@Override
 	public void editQuestionnaire() {
-		// TODO Part 3
-		
+		for (Question q : question2Responses.keySet()){
+			q.reviseEntireQuestion();
+			List<Result> newChoices = null;
+			System.out.println("Change Correct Answers?");
+			switch(IOUtilities.choices(IOUtilities.CONFIRM)){
+				case 1:
+					newChoices= q.buildCorrectResponseList();
+					question2Responses.put(q, newChoices);
+					break;
+				case 2:
+					break;
+			}
+		}
 	}
 	
 	public static Survey loadQuestionnaire() {
