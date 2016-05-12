@@ -1,9 +1,6 @@
 package result;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import driverclasses.IOUtilities;
 
 
 public class RankingResult extends Result {

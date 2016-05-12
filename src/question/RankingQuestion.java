@@ -22,6 +22,8 @@ public class RankingQuestion extends MatchingQuestion {
 	 * 
 	 */
 	
+	String whoami = "RankingQuestion";
+	
 	public RankingQuestion() {
 		super();
 	}

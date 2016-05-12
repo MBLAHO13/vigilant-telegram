@@ -9,6 +9,7 @@ import result.Result;
 
 
 public class TrueFalseQuestion extends MultipleChoiceQuestion {
+	String whoami = "TrueFalseQuestion";
 	public TrueFalseQuestion() {
 		super(Arrays.asList("True", "False"));
 	}

@@ -21,7 +21,7 @@ public class IOUtilities {
 
 	public static String serialize(Object obj){
 		Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
-			       .create();;
+			       .create();
 		return gson.toJson(obj);
 	}
 	

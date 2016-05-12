@@ -13,6 +13,7 @@ import result.*;
 public class MultipleChoiceQuestion extends Question {
 	//will also be used for T/F, seeing as a true false question is simply a 2-choice question, multiple choice is n-choice
 	List<String> options;
+	String whoami = "MultipleChoiceQuestion";
 	public MultipleChoiceQuestion() {
 		options = new ArrayList<String>();
 	}

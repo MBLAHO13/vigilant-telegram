@@ -9,6 +9,7 @@ import result.ShortAnswerResult;
 
 public class ShortAnswerQuestion extends Question {
 	private int maxLength = 1000; //whatever man
+	String whoami = "ShortAnswerQuestion";
 	public ShortAnswerQuestion() {	}
 
 	@Override
