@@ -36,13 +36,47 @@ public class Question {
 	public Result acceptInput() {
 		throw new UnsupportedOperationException("Do not call Question.acceptInput().");
 	}
-	public void reviseEntireQuestion() {
-		throw new UnsupportedOperationException("Do not call Question.reviseEntireQuestion().");
-	} //and i mean it!
+	
+	private void changeChoices() {
+		// TODO Auto-generated method stub
+		//Override me!
+	}
 	// ----- SHOULD BE ABSTRACT -------
 	
-	
-	public Question build() {
+	public void reviseEntireQuestion() {
+		
+		//We can do this one UNIX-style, so it's less stupid.
+		System.out.println("Type your new prompt or hit enter to keep the old input.");
+		Scanner safeScanner = IOUtilities.safeScanner(System.in);
+		System.out.println("Old prompt:");
+		this.ppPrompt();
+		System.out.println("New Prompt?");
+		String userChoice = safeScanner.nextLine();
+		if (userChoice != "" && userChoice != IOUtilities.SENTINEL){
+			setPrompt(userChoice);
+		}
+		System.out.println("Change Answer Choices?");
+		switch(IOUtilities.choices(IOUtilities.CONFIRM)){
+			case 1:
+				this.changeChoices();
+				break;
+			case 2:
+				break;
+		}
+		System.out.println("Change Correct Answers?");
+		switch(IOUtilities.choices(IOUtilities.CONFIRM)){
+			case 1:
+				this.changeCorrectResponseList();
+				break;
+			case 2:
+				break;
+		}
+	} //and i mean it!
+	private void changeCorrectResponseList() {
+		// TODO Auto-generated method stub
+		//Override me!
+	}
+	public Question build(){
 		if(buildPrompt() == null){ return null;} // attempt to build , if it bombs out, bomb out
 		buildChoices();
 		return this;

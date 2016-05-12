@@ -20,8 +20,7 @@ public class MultipleChoiceResult extends Result {
 	}
 
 	public String ppResponse() {
-		// TODO part 3
-		return null;
+		return result.toString();
 	}
 
 	public List<Integer> getCorrectResult() {
