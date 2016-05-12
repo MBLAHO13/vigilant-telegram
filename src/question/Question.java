@@ -19,19 +19,25 @@ public class Question {
 	// ppFoo == pretty print FOO
 	
 	// ----- SHOULD BE ABSTRACT -------
+	// these will all cough up exceptions to be trapped
+	// these methods should never be executed, since they are overridden
+	// this just makes certain of that
 	protected void ppAnswerChoices() {
+		throw new UnsupportedOperationException("Do not call Question.ppAnswerChoices().");
 	}
 	public void ppUserInput() {
+		throw new UnsupportedOperationException("Do not call Question.ppUserInput().");
 	}
 	
 	protected void buildChoices(){
-		
+		throw new UnsupportedOperationException("Do not call Question.buildChoices().");
 	}
 
 	public Result acceptInput() {
-		return null;
+		throw new UnsupportedOperationException("Do not call Question.acceptInput().");
 	}
 	public void reviseEntireQuestion() {
+		throw new UnsupportedOperationException("Do not call Question.reviseEntireQuestion().");
 	} //and i mean it!
 	// ----- SHOULD BE ABSTRACT -------
 	

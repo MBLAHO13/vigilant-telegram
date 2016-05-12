@@ -1,20 +1,18 @@
 package result;
 
-public class Result implements Cloneable{
+//This should be abstract as well, but GSON. 
+public class Result{
 	public Result() {}
 	
+	//These should be overridden in all subclasses.
 	public boolean isCorrect(Result toCompare){
-		return false;
-		
+		throw new UnsupportedOperationException("Do not call Result.toCompare().");
 	}
 	//returns string because we don't know who's printing
 	public String ppResponse(){
-		return null;
-		
+		throw new UnsupportedOperationException("Do not call Result.ppResponse().");
 	}
-	
 	public void build(){
-		//TODO: this vs Constructor?
+		throw new UnsupportedOperationException("Do not call Result.build().");
 	}
-
 }
