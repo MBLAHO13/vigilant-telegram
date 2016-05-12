@@ -135,4 +135,8 @@ public class Survey {
 		// see http://stackoverflow.com/a/1026736
 		return new ArrayList<Question>(question2Responses.keySet());
 	}
+	
+	public void gradeQuestionnaire(){
+		System.out.println("You cannot grade Surveys. You may tabulate a survey, or create a test.");
+	}
 }

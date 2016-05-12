@@ -109,4 +109,9 @@ public class Test extends Survey { //for once, "test" is a final name...
 		System.out.println("---End of Question---");
 	}
 	}
+	
+	@Override
+	public void gradeQuestionnaire(){
+		//TODO part 3
+	}
 }
