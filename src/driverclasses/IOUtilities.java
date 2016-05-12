@@ -26,6 +26,7 @@ public class IOUtilities {
 	}
 	
 	// to create a FOO, pass in FOO.class as targetClass!
+	//Shit's broken right now...
 	public static Object deserialize(String slurp, Class<?> targetClass){ //this needs to be cast properly on the other end
 		//magic switch to make sure all my maps, arraylists, etc all get serialized right
 		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();

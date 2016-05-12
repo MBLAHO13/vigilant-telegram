@@ -79,8 +79,8 @@ public class Question {
 	}
 	
 	public void ppQuestion(){
-		this.ppPrompt();
-		this.ppAnswerChoices();
+		ppPrompt();
+		ppAnswerChoices();
 	}
 	
 	public boolean checkUserResponse(Result correctResult){
