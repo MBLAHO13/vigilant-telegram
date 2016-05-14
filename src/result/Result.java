@@ -19,4 +19,8 @@ public class Result{
 	public boolean isCorrect(Result toCompare) {
 		return (this.getData().equals( toCompare.getData())); //check if data objects are equal
 	}
+	
+	public boolean isGradeable(){
+		return true;
+	}
 }

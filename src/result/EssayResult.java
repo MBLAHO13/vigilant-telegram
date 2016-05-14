@@ -33,4 +33,8 @@ public class EssayResult extends Result {
 	protected String getData(){
 		return userResponse;
 	}
+	@Override
+	public boolean isGradeable(){
+		return false;
+	}
 }

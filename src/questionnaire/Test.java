@@ -1,6 +1,7 @@
 package questionnaire;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,9 @@ import result.Result;
 
 
 public class Test extends Survey { //for once, "test" is a final name...
+private int questionCount =0;
+private int points = 0;
 
-	
-	
 	public Test() {
 		super();
 	}
@@ -68,8 +69,10 @@ public class Test extends Survey { //for once, "test" is a final name...
 	}
 	
 	public double scoreQuestionnaire(){
-		return 0; //TODO Part 3
-		
+		//taken from http://stackoverflow.com/a/8061414
+		//trims down all the binary math inaccuracy to two places
+		DecimalFormat df2 = new DecimalFormat("###.##");
+		return Double.valueOf(df2.format(points/questionCount));
 	}
 	
 	public List<Result> getCorrectResponse(Question q) {
@@ -94,26 +97,45 @@ public class Test extends Survey { //for once, "test" is a final name...
 	
 	@Override
 	public void ppQuestionnaire(){
-	if (this.question2Responses.isEmpty() || this.question2Responses == null){
-		System.err.println("Empty Questionnaire.");
-		return;
-	}
-	for(Question q : this.question2Responses.keySet()){
-		if (q == null){
-			System.err.println("Question is null!");
+		if (this.question2Responses.isEmpty() || this.question2Responses == null){
+			System.err.println("Empty Questionnaire.");
 			return;
 		}
-		q.ppQuestion();
-		for (Result r : this.question2Responses.get(q)){
-			System.out.println("Correct Answer:");
-			System.out.println(r.ppResponse());
+		for(Question q : this.question2Responses.keySet()){
+			if (q == null){
+				System.err.println("Question is null!");
+				return;
+			}
+			q.ppQuestion();
+			for (Result r : this.question2Responses.get(q)){
+				System.out.println("Correct Answer:");
+				System.out.println(r.ppResponse());
+			}
+			System.out.println("---End of Question---");
 		}
-		System.out.println("---End of Question---");
-	}
 	}
 	
 	@Override
 	public void gradeQuestionnaire(){
-		//TODO part 3
+		for(Question q : question2Responses.keySet()){
+			List<Result> answerList = question2Responses.get(q);
+			tallyCorrectAnswer(answerList, q);
+		}
+		System.out.println("Your score is " + questionCount + "/" + points + ": " + scoreQuestionnaire());
+	}
+	
+	public boolean tallyCorrectAnswer(List<Result> answerList, Question q){
+		for (Result r : answerList){
+			if(r.isGradeable()){
+				questionCount++;
+				if (r.isCorrect(q.getUserResponse())){
+					points++; //TODO check the point values in the assignment...
+					return true; //we found a correct answer
+				}
+			}else{
+				return false; //we cannot grade this question
+			}
+		}
+		return false; // we did not find a correct answer
 	}
 }
