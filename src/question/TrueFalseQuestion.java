@@ -9,9 +9,9 @@ import result.Result;
 
 
 public class TrueFalseQuestion extends MultipleChoiceQuestion {
-	String whoami = "TrueFalseQuestion";
 	public TrueFalseQuestion() {
 		super(Arrays.asList("True", "False"));
+		this.whoami = "TrueFalseQuestion";
 	}
 	@Override
 	public Question build(){

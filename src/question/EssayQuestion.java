@@ -7,10 +7,11 @@ import result.*;
 
 public class EssayQuestion extends ShortAnswerQuestion {
 	//no answer choices needed
-	//TODO make these final values
-	String whoami = "EssayQuestion";
+	
 
-	public EssayQuestion() {}
+	public EssayQuestion() {
+		this.whoami = "EssayQuestion";
+	}
 
 	@Override
 	public Result acceptInput() {
@@ -26,12 +27,6 @@ public class EssayQuestion extends ShortAnswerQuestion {
 			//store user's input as a result object for later
 			return new EssayResult(sb.toString());
 	}
-
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part3
-		
-	}	
 	
 	@Override
 	public List<Result> buildCorrectResponseList(){

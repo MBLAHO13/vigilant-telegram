@@ -14,6 +14,8 @@ import result.Result;
 // TODO: Part 3, rework this so it's less of a turd
 public class Question {
 	private String prompt;
+	@SuppressWarnings("unused")
+	protected String whoami;
 	protected Result userResponse;
 	// ppFoo == pretty print FOO
 	

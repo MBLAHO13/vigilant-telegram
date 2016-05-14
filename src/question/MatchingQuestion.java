@@ -14,11 +14,11 @@ public class MatchingQuestion extends Question {
 	//two columns
 	protected List<String> rightChoices; 
 	protected List<String>leftChoices;
-	String whoami = "MatchingQuestion";
 
 	public MatchingQuestion() {
 		this.leftChoices = new ArrayList<String>();
 		this.rightChoices = new ArrayList<String>();
+		this.whoami = "MatchingQuestion";
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class MatchingQuestion extends Question {
 
 	@Override
 	public void ppUserInput() {
-		// TODO Part 3
+		this.userResponse.ppResponse();
 	}
 
 	@Override
