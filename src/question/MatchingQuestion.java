@@ -29,11 +29,6 @@ public class MatchingQuestion extends Question {
 	}
 
 	@Override
-	public void ppUserInput() {
-		this.userResponse.ppResponse();
-	}
-
-	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Enter your choices in integer format (matching 1 to 2 gives \"12\"), each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");

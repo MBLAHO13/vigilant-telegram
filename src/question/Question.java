@@ -12,6 +12,7 @@ import result.Result;
 // However, my options are A) make this abstract B) make a custom adapter
 // Utility of GSON >>> having the prettiest code
 // TODO: Part 3, rework this so it's less of a turd
+//TODO: Override the equals method here
 public class Question {
 	private String prompt;
 	@SuppressWarnings("unused")
@@ -25,9 +26,6 @@ public class Question {
 	// this just makes certain of that
 	protected void ppAnswerChoices() {
 		throw new UnsupportedOperationException("Do not call Question.ppAnswerChoices().");
-	}
-	public void ppUserInput() {
-		throw new UnsupportedOperationException("Do not call Question.ppUserInput().");
 	}
 	
 	protected void buildChoices(){
@@ -119,11 +117,11 @@ public class Question {
 		return validResponses;
 	}
 
-	public String ppResult(){
+	public void ppResult(){
 		if (userResponse != null){
-			return userResponse.ppResponse();
+			System.out.println(userResponse.ppResponse());
 		}else{
-			return null;
+			System.out.println("No User response Submitted");
 		}
 	}
 }

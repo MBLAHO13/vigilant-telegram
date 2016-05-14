@@ -12,11 +12,6 @@ public class ShortAnswerQuestion extends Question {
 	public ShortAnswerQuestion() {
 		this.whoami = "ShortAnswerQuestion";
 	}
-
-	@Override
-	public void ppUserInput() {
-		System.out.println(this.userResponse.ppResponse());
-	}
 	
 	@Override
 	public Result acceptInput() {

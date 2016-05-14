@@ -30,11 +30,6 @@ public class MultipleChoiceQuestion extends Question {
 	}
 
 	@Override
-	public void ppUserInput() {
-		this.userResponse.ppResponse();
-	}
-
-	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Enter your choice(s), each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");

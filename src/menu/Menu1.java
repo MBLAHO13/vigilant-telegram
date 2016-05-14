@@ -9,9 +9,7 @@ import driverclasses.IOUtilities;
 public class Menu1 implements Menu {
 	List<String> menu1 = Arrays.asList("Survey", "Test", "Quit");
 	int numberOfChoices = menu1.size();
-	public Menu1() {
-		// TODO Auto-generated constructor stub
-	}
+	public Menu1() {}
 
 	@Override
 	public State run(Survey questionnaire) {
