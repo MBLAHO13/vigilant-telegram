@@ -65,6 +65,7 @@ public class MatchingQuestion extends Question {
 	}
 
 	protected void buildLeftChoices(){
+		this.leftChoices.clear();
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Enter your left-hand choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
