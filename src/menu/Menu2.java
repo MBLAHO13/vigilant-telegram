@@ -1,5 +1,7 @@
 package menu;
 
+//this really should be split into two objects, menuTest and MenuSurvey, but I don't think that will be happening before the deadline
+
 import java.util.Arrays;
 import java.util.List;
 

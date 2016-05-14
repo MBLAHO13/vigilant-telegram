@@ -1,44 +1,33 @@
 package result;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MatchingResult extends RankingResult {
 
-	private Map<Integer, Integer> correctResponse ;
+	private List<Integer> correctResponse ;
 	public MatchingResult() {
-		this.correctResponse = new HashMap<Integer, Integer>();
+		this.correctResponse = new ArrayList<Integer>();
 	}
 	
-	public MatchingResult(Map<Integer, Integer> userResponse) {
-		this.correctResponse = userResponse;
-	}
-
 	public MatchingResult(List<Integer> choices) {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public boolean isCorrect(Result toCompare) {
-		// TODO Part 3
-		return false;
-	}
+		this.correctResponse = choices;
+	}	
 
 	@Override
 	public String ppResponse() {
 		StringBuilder sb = new StringBuilder();
-		for (Map.Entry<Integer, Integer> entry : correctResponse.entrySet())
+		for (Integer entry : correctResponse)
 		{
-		    sb.append(entry.getKey() + " -- " + entry.getValue());
+			String digits = String.valueOf(entry);
+			//thank you Dr Novak for making me do 500 billion proofs like this 
+		    sb.append( digits.substring(0, (digits.length()/2)-1 )+  " -- " +  digits.substring(digits.length()/2, digits.length()-1)); 
 		    sb.append("\n");
 		}
 		return sb.toString();
 	}
-
-	@Override
-	public void build() {
-		// TODO Auto-generated method stub
-		
+	
+	protected List<Integer> getData(){
+		return correctResponse;
 	}
 
 }

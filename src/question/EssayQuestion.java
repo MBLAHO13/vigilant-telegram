@@ -7,6 +7,7 @@ import result.*;
 
 public class EssayQuestion extends ShortAnswerQuestion {
 	//no answer choices needed
+	//TODO make these final values
 	String whoami = "EssayQuestion";
 
 	public EssayQuestion() {}

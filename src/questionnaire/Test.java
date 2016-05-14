@@ -46,6 +46,8 @@ public class Test extends Survey { //for once, "test" is a final name...
 
 	@Override
 	public void editQuestionnaire() {
+		//TODO add logic that picks the number of question you want to fix
+		// LinkedHashMap means that there's insertion order
 		for (Question q : question2Responses.keySet()){
 			q.reviseEntireQuestion();
 			List<Result> newChoices = null;

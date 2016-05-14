@@ -10,9 +10,9 @@ public class EssayResult extends Result {
 		this.userResponse = userInput;
 	}
 
+	//if you're calling this, you dun fucked up.
 	@Override
 	public boolean isCorrect(Result toCompare) {
-		// TODO Part3
 		return false;
 	}
 
@@ -30,10 +30,7 @@ public class EssayResult extends Result {
 	}
 
 	@Override
-	public void build() {
-		//TODO: Part 2
-		
+	protected String getData(){
+		return userResponse;
 	}
-	
-
 }

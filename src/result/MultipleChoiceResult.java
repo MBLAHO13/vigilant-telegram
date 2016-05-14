@@ -16,21 +16,16 @@ public class MultipleChoiceResult extends Result {
 
 	public boolean isCorrect(Result toCompare) {
 		
-		return (this.result.equals(toCompare));
+		return (this.result.equals(toCompare.getData()));
 	}
 
 	public String ppResponse() {
 		return result.toString();
 	}
 
-	public List<Integer> getCorrectResult() {
-		return result;
-	}
-
 	@Override
-	public void build() {
-		// TODO not sure if i need this...
-		
+	protected List<Integer> getData() {
+		return result;
 	}
 
 }

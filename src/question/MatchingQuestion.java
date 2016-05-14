@@ -36,7 +36,7 @@ public class MatchingQuestion extends Question {
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choices, each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		System.out.println("Enter your choices in integer format (matching 1 to 2 gives \"12\"), each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
 		List<Integer> choices = new ArrayList<Integer>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
@@ -50,12 +50,6 @@ public class MatchingQuestion extends Question {
 		}
 		userReader.close();
 		return new MatchingResult(choices);
-	}
-
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part3
-		
 	}
 
 	public List<String> getRightChoices() {

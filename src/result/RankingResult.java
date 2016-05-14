@@ -22,12 +22,6 @@ public class RankingResult extends Result {
 	}
 
 	@Override
-	public boolean isCorrect(Result toCompare) {
-		// TODO Part 3
-		return false;
-	}
-
-	@Override
 	public String ppResponse() {
 		StringBuilder sb = new StringBuilder();
 		for (Integer s : this.userResponse)
@@ -38,18 +32,13 @@ public class RankingResult extends Result {
 		return sb.toString();
 	}
 
-	public List<Integer> getCorrectResponse() {
-		return userResponse;
-	}
-
 	public void setCorrectResponse(List<Integer> correctResponse) {
 		this.userResponse = correctResponse;
 	}
 
 	@Override
-	public void build() {
-		// TODO not sure if I need this
-		
+	protected List<Integer> getData(){
+		return userResponse;
 	}
 
 }
