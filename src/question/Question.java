@@ -66,7 +66,7 @@ public class Question {
 	public Question(){
 		
 	}
-	protected void ppPrompt(){
+	public void ppPrompt(){
 		System.out.println("\nQuestion: " + prompt);
 	}
 	

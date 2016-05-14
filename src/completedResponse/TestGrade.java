@@ -28,14 +28,10 @@ public class TestGrade {
 	public TestGrade(Integer numberOfQuestions, Integer pointsEarned){
 		this.numberOfQuestions = 0;
 		this.pointsEarned = 0;
-		this.score = Double.valueOf(df2.format(pointsEarned/numberOfQuestions));
 	}
 	
 	public Double getScore() {
 		return score;
-	}
-	public void setScore(Double score) {
-		this.score = score;
 	}
 	public Integer getNumberOfQuestions() {
 		return numberOfQuestions;
@@ -51,11 +47,15 @@ public class TestGrade {
 	};
 	
 	public void recalculateScore(){
-		this.score = Double.valueOf(df2.format(pointsEarned/numberOfQuestions));
+		if (numberOfQuestions == 0){ //prevent divide by 0 exception
+			this.score = (double) 0;
+			return;
+		}
+		this.score = Double.valueOf(df2.format((pointsEarned *10)/(numberOfQuestions *10)));
 	}
 	
 	public String toString(){
-		return "Your score is " + numberOfQuestions + "/" + pointsEarned + ": " + score;
+		return "Your score is " + numberOfQuestions * 10+ "/" + pointsEarned *10 + ": " + score;
 	}
 	
 	public void saveGrade(){

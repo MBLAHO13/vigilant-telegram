@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import completedResponse.SurveyResponse;
+
 import driverclasses.IOUtilities;
 
 import question.*;
@@ -14,8 +16,7 @@ import result.Result;
 public class Survey {
 	
 	protected Map<Question, List<Result>> question2Responses;
-	//TODO part 3 (do I like this format?)
-	protected List<Result> reportData; //raw report data
+	protected SurveyResponse reportData; //raw report data
 	protected List<String> options = Arrays.asList("Add a new T/F question", "Add a new Multiple Choice question", 
 			"Add a new Short Answer question", "Add a new Essay Question", "Add a new Ranking Question",
 			"Add a new Matching Question", "Back");
@@ -23,12 +24,10 @@ public class Survey {
 
 	public Survey() {
 		this.question2Responses = new LinkedHashMap<Question, List<Result>>();
-		this.reportData = new ArrayList<Result>();
 	}
 	
 	public Survey(Map<Question, List<Result>> questionList) {
 		this.question2Responses = questionList;
-		this.reportData = new ArrayList<Result>();
 	}
 
 	
@@ -108,14 +107,15 @@ public class Survey {
 			q.ppQuestion();
 			q.setUserResponse(q.acceptInput());
 		}
-		
 	}
 	
-	public void tabulateQuestionnaire() { //TODO
+	public void tabulateQuestionnaire() {
+		this.reportData = new SurveyResponse();
 		for(Question q : question2Responses.keySet()){
-			q.getUserResponse();
+			this.reportData.addResponse(q, q.getUserResponse());
+			this.reportData.printReport();
+			this.reportData.saveTabulation();
 		}
-		
 	}
 	
 	public void ppQuestionnaire(){

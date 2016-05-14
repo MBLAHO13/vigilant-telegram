@@ -20,7 +20,7 @@ public class Menu2 implements Menu {
 			menu2 = Arrays.asList("Create a new " + specifier, "Display a " + specifier, "Load a " + specifier, "Save a " + specifier, "Take a " + specifier,  "Tabulate a " + specifier, "Modify an Existing " + specifier, "Back", "Grade a test");
 		}else{
 			menu2 = Arrays.asList("Create a new " + specifier, "Display a " + specifier, "Load a " + specifier, "Save a " + specifier, "Take a " + specifier, "Tabulate a " + specifier, "Modify an Existing " + specifier, "Back");
-		}	
+		}
 	}
 
 	@Override

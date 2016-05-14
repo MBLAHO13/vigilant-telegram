@@ -4,8 +4,6 @@ package result;
 // TODO: remove this and see if everything explodes
 public class TrueFalseResult extends MultipleChoiceResult {
 
-	public TrueFalseResult() {
-		// TODO Auto-generated constructor stub
-	}
+	public TrueFalseResult() {}
 
 }
