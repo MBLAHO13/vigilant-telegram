@@ -92,7 +92,7 @@ public class Menu2 implements Menu {
 		        case 9://Grade a test
 		        	if (specifier.equals("test")){
 		        		if (questionnaire != null){
-		        			((Test)questionnaire).scoreQuestionnaire();
+		        			((Test)questionnaire).gradeQuestionnaire();
 		        		} else{
 		        			System.err.println("[ERROR] No questionnaire loaded. Load or create a " + specifier + ".");
 		        		}

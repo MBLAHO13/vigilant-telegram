@@ -1,7 +1,6 @@
 package questionnaire;
 
 import java.io.File;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +8,13 @@ import java.util.Map;
 import driverclasses.IOUtilities;
 import question.Question;
 import result.Result;
+import completedResponse.TestGrade;
 
 
 public class Test extends Survey { //for once, "test" is a final name...
-private int questionCount =0;
-private int points = 0;
-
+private Integer questionCount =0;
+private Integer points = 0;
+protected TestGrade grade;
 	public Test() {
 		super();
 	}
@@ -67,14 +67,7 @@ private int points = 0;
 	public static Survey loadQuestionnaire() {
 		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.chooseFile())), Test.class));
 	}
-	
-	public void scoreQuestionnaire(){
-		//taken from http://stackoverflow.com/a/8061414
-		//trims down all the binary math inaccuracy to two places
-		DecimalFormat df2 = new DecimalFormat("###.##");
-		System.out.println("Your score is " + questionCount + "/" + points + ": " + Double.valueOf(df2.format(points/questionCount)));
-	}
-	
+
 	public List<Result> getCorrectResponse(Question q) {
 		return this.question2Responses.get(q);
 	}
@@ -121,7 +114,9 @@ private int points = 0;
 			List<Result> answerList = question2Responses.get(q);
 			tallyCorrectAnswer(answerList, q);
 		}
-		scoreQuestionnaire();
+		this.grade = new TestGrade(questionCount, points);
+		this.grade.saveGrade();
+		System.out.println(this.grade.toString());
 	}
 	
 	public boolean tallyCorrectAnswer(List<Result> answerList, Question q){

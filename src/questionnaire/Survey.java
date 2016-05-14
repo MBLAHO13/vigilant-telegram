@@ -15,7 +15,7 @@ public class Survey {
 	
 	protected Map<Question, List<Result>> question2Responses;
 	//TODO part 3 (do I like this format?)
-	protected List<String> reportData; //raw report data
+	protected List<Result> reportData; //raw report data
 	protected List<String> options = Arrays.asList("Add a new T/F question", "Add a new Multiple Choice question", 
 			"Add a new Short Answer question", "Add a new Essay Question", "Add a new Ranking Question",
 			"Add a new Matching Question", "Back");
@@ -23,12 +23,12 @@ public class Survey {
 
 	public Survey() {
 		this.question2Responses = new LinkedHashMap<Question, List<Result>>();
-		this.reportData = new ArrayList<String>();
+		this.reportData = new ArrayList<Result>();
 	}
 	
 	public Survey(Map<Question, List<Result>> questionList) {
 		this.question2Responses = questionList;
-		this.reportData = new ArrayList<String>();
+		this.reportData = new ArrayList<Result>();
 	}
 
 	
@@ -111,8 +111,10 @@ public class Survey {
 		
 	}
 	
-	public void tabulateQuestionnaire() {
-		// TODO part3
+	public void tabulateQuestionnaire() { //TODO
+		for(Question q : question2Responses.keySet()){
+			q.getUserResponse();
+		}
 		
 	}
 	
