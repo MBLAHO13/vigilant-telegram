@@ -51,7 +51,7 @@ public class Question {
 		System.out.println("Change Answer Choices?");
 		switch(IOUtilities.choices(IOUtilities.CONFIRM)){
 			case 1:
-				//set new answer choices
+				buildChoices();
 				break;
 			case 2:
 				break;

@@ -55,6 +55,7 @@ public class MultipleChoiceQuestion extends Question {
 	
 	@Override
 	protected void buildChoices(){
+		options.clear();
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
 		String userInput = userReader.nextLine();

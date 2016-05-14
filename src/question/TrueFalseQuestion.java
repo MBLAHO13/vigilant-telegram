@@ -19,7 +19,10 @@ public class TrueFalseQuestion extends MultipleChoiceQuestion {
 		if(this.buildPrompt() == null){ return null;}
 		return this;
 	}
-	
+	@Override
+	protected void buildChoices(){
+		System.out.println("The answer choices for a True-False question are always \"True\" and \"False\".");
+	}
 	@Override 
 	public List<Result> buildCorrectResponseList(){
 		List<Result> validResponses = new ArrayList<Result>();
