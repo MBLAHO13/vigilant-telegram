@@ -24,10 +24,12 @@ public class Survey {
 
 	public Survey() {
 		this.question2Responses = new LinkedHashMap<Question, List<Result>>();
+		this.reportData = new SurveyResponse();
 	}
 	
 	public Survey(Map<Question, List<Result>> questionList) {
 		this.question2Responses = questionList;
+		this.reportData = new SurveyResponse();
 	}
 
 	
@@ -107,10 +109,10 @@ public class Survey {
 			q.ppQuestion();
 			q.setUserResponse(q.acceptInput());
 		}
+		tabulateQuestionnaire();
 	}
 	
 	public void tabulateQuestionnaire() {
-		this.reportData = new SurveyResponse();
 		for(Question q : question2Responses.keySet()){
 			this.reportData.addResponse(q, q.getUserResponse());
 			this.reportData.printReport();
