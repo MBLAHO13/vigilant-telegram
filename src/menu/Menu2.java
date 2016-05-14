@@ -91,7 +91,11 @@ public class Menu2 implements Menu {
 		        	return new State(new Menu1(),questionnaire);
 		        case 9://Grade a test
 		        	if (specifier.equals("test")){
-		        		questionnaire.gradeQuestionnaire();
+		        		if (questionnaire != null){
+		        			((Test)questionnaire).scoreQuestionnaire();
+		        		} else{
+		        			System.err.println("[ERROR] No questionnaire loaded. Load or create a " + specifier + ".");
+		        		}
 		        	} else{
 		        		System.out.println("Invalid choice.");
 		        	}

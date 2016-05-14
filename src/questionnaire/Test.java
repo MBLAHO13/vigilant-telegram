@@ -68,11 +68,11 @@ private int points = 0;
 		return (Test) (IOUtilities.deserialize(IOUtilities.slurp(new File("./Storage" + System.getProperty("file.separator") + IOUtilities.chooseFile())), Test.class));
 	}
 	
-	public double scoreQuestionnaire(){
+	public void scoreQuestionnaire(){
 		//taken from http://stackoverflow.com/a/8061414
 		//trims down all the binary math inaccuracy to two places
 		DecimalFormat df2 = new DecimalFormat("###.##");
-		return Double.valueOf(df2.format(points/questionCount));
+		System.out.println("Your score is " + questionCount + "/" + points + ": " + Double.valueOf(df2.format(points/questionCount)));
 	}
 	
 	public List<Result> getCorrectResponse(Question q) {
@@ -121,7 +121,7 @@ private int points = 0;
 			List<Result> answerList = question2Responses.get(q);
 			tallyCorrectAnswer(answerList, q);
 		}
-		System.out.println("Your score is " + questionCount + "/" + points + ": " + scoreQuestionnaire());
+		scoreQuestionnaire();
 	}
 	
 	public boolean tallyCorrectAnswer(List<Result> answerList, Question q){
