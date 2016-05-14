@@ -52,12 +52,7 @@ public class MultipleChoiceQuestion extends Question {
 		userReader.close();
 		return new MultipleChoiceResult(capture);
 	}
-
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part3
-		
-	}
+	
 	@Override
 	protected void buildChoices(){
 		Scanner userReader = IOUtilities.safeScanner(System.in);

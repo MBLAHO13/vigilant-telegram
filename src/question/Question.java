@@ -11,7 +11,7 @@ import result.Result;
 // Based on design principles, this should be abstract for code reuse.
 // However, my options are A) make this abstract B) make a custom adapter
 // Utility of GSON >>> having the prettiest code
-// TODO: Part 3, rework this so it's less of a
+// TODO: Part 3, rework this so it's less of a turd
 public class Question {
 	private String prompt;
 	protected Result userResponse;

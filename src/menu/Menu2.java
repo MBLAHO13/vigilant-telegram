@@ -69,7 +69,7 @@ public class Menu2 implements Menu {
 		        	}
 		        	break;
 		        case 7: //Modify
-		        	System.err.println("This will overwrite the current questionnaire loaded. Continue?");
+		        	System.out.println("This will overwrite the current questionnaire loaded. Continue?\n");
 		        	if(IOUtilities.choices(IOUtilities.CONFIRM) == 1){
 		        		System.out.println("Do you want to edit the current questionnaire or a questionnaire on file?");
 		        		if (IOUtilities.choices(Arrays.asList("Current", "On File")) == 1){

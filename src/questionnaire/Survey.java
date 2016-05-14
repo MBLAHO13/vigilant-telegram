@@ -84,9 +84,13 @@ public class Survey {
 	}
 
 	public void editQuestionnaire() {
+		System.out.println("Now revising current Questionnaire.");
 		for (Question q : question2Responses.keySet()){
+			System.out.println("Now revising question.");
 			q.reviseEntireQuestion();
+			System.out.println("Question revised.");
 		}
+		System.out.println("Finished revising survey");
 	}
 
 	
