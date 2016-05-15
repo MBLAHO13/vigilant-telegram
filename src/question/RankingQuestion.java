@@ -28,10 +28,6 @@ public class RankingQuestion extends MatchingQuestion {
 	public RankingQuestion() {
 		super();
 	}
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part 3
-	}
 	
 	protected void buildRightChoices(){
 		this.rightChoices.clear();

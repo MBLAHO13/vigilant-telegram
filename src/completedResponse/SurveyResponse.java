@@ -28,8 +28,10 @@ public class SurveyResponse {
 		}else{ //the question is in the map
 			Map<Result, Integer> currentData = this.responses.get(q);
 			if(currentData.containsKey(r)){ // we've seen this response before
+				System.out.println("We've seen response before");
 				this.responses.get(q).put(r, currentData.get(r) + 1); //update the map to reflect that we've seen this one more time
 			} else{ // we have not seen this response before
+				System.out.println("We've haven't seen response before");
 				this.responses.get(q).put(r, 1); //add in the new key with 1 signifying that this is the first time
 			}
 		}

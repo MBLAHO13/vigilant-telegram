@@ -52,7 +52,6 @@ public class IOUtilities {
 		return contents;
 		
 	}
-	//TODO: return status?
 	public static void spew(String contents, File f){
 		PrintWriter writer = null;
 		

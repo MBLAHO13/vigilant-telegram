@@ -124,7 +124,7 @@ protected TestGrade grade;
 			if(r.isGradeable()){
 				questionCount++;
 				if (r.isCorrect(q.getUserResponse())){
-					points++; //TODO check the point values in the assignment...
+					points++; 
 					return true; //we found a correct answer
 				}
 			}else{
