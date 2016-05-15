@@ -49,14 +49,15 @@ protected TestGrade grade;
 	public void editQuestionnaire() {
 		//TODO add logic that picks the number of question you want to fix
 		// LinkedHashMap means that there's insertion order
-		for (Question q : question2Responses.keySet()){
+		for (Map.Entry<Question, List<Result>> entry : question2Responses.entrySet()){
+			Question q = entry.getKey();
 			q.reviseEntireQuestion();
 			List<Result> newChoices = null;
 			System.out.println("Change Correct Answers?");
 			switch(IOUtilities.choices(IOUtilities.CONFIRM)){
 				case 1:
 					newChoices= q.buildCorrectResponseList();
-					question2Responses.put(q, newChoices);
+					entry.setValue(newChoices); //doing it this way fixes ConcurrentModificationException
 					break;
 				case 2:
 					break;
