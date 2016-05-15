@@ -10,9 +10,6 @@ public class TestGrade {
 	private Double score;
 	private Integer numberOfQuestions;
 	private Integer pointsEarned;
-	//taken from http://stackoverflow.com/a/8061414
-    //trims down all the binary math inaccuracy to two places
-	private final DecimalFormat df2 = new DecimalFormat("###.##");
 	
 	public TestGrade(){
 		this.score = (double) 0;
@@ -26,8 +23,9 @@ public class TestGrade {
 	}
 	
 	public TestGrade(Integer numberOfQuestions, Integer pointsEarned){
-		this.numberOfQuestions = 0;
-		this.pointsEarned = 0;
+		this.numberOfQuestions = numberOfQuestions;;
+		this.pointsEarned = pointsEarned;
+		recalculateScore();
 	}
 	
 	public Double getScore() {
@@ -51,7 +49,7 @@ public class TestGrade {
 			this.score = (double) 0;
 			return;
 		}
-		this.score = Double.valueOf(df2.format((pointsEarned *10)/(numberOfQuestions *10)));
+		this.score = (double) ((int) ((pointsEarned *10)/(numberOfQuestions *10))) * 100; //double cast to truncate any leading decimal pts
 	}
 	
 	public String toString(){
@@ -59,7 +57,7 @@ public class TestGrade {
 	}
 	
 	public void saveGrade(){
-		File f = new File("./Storage" + System.getProperty("file.separator") + " Grades" + System.getProperty("file.separator") + "attempt" + (new Date()).getTime());
+		File f = new File("./Grades" + System.getProperty("file.separator") + "attempt" + (new Date()).getTime());
 		IOUtilities.spew(IOUtilities.serialize(this), f);
 	}
 }

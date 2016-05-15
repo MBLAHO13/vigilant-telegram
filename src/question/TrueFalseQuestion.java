@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import driverclasses.IOUtilities;
+
 import result.Result;
 
 
@@ -25,6 +27,7 @@ public class TrueFalseQuestion extends MultipleChoiceQuestion {
 	}
 	@Override 
 	public List<Result> buildCorrectResponseList(){
+		System.out.println("Input your correct choices one on each line, or " + IOUtilities.SENTINEL + " to quit.");
 		List<Result> validResponses = new ArrayList<Result>();
 		validResponses.add(this.acceptInput());
 		return validResponses;

@@ -12,7 +12,6 @@ import result.Result;
 // However, my options are A) make this abstract B) make a custom adapter
 // Utility of GSON >>> having the prettiest code
 // TODO: Part 3, rework this so it's less of a turd
-//TODO: Override the equals method here
 public class Question {
 	private String prompt;
 	protected String whoami;
@@ -105,7 +104,7 @@ public class Question {
 	}
 	
 	public List<Result> buildCorrectResponseList(){
-		System.out.println("Input your choices one on each line, or " + IOUtilities.SENTINEL + " to quit.");
+		System.out.println("Input your correct choices one on each line, or " + IOUtilities.SENTINEL + " to quit.");
 		List<Result> validResponses = new ArrayList<Result>();
 		int doAnotherResponse;
 		do {

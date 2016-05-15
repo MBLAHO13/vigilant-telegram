@@ -57,7 +57,7 @@ public class SurveyResponse {
 	}
 	
 	public void saveTabulation(){
-		File f = new File("./Storage" + System.getProperty("file.separator") + " Tabulations" + System.getProperty("file.separator") + "tabulation" + (new Date()).getTime());
+		File f = new File("./Tabulations" + System.getProperty("file.separator") + "tabulation" + (new Date()).getTime());
 		IOUtilities.spew(IOUtilities.serialize(this), f);
 	}
 	

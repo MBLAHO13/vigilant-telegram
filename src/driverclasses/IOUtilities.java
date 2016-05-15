@@ -12,24 +12,28 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import question.Question;
+import result.Result;
+
 import com.google.gson.*;
 
 public class IOUtilities {
 	
 	public static final String SENTINEL = "DONE";
 	public static final List<String> CONFIRM = Arrays.asList("Yes", "No");
+	private static final Gson gson = new GsonBuilder()
+			.enableComplexMapKeySerialization() //magic switch to make sure all my maps all get serialized right
+			.registerTypeAdapter(Question.class   , new QuestionAdapter()) //magic adapter for questions 
+			.registerTypeAdapter(Result.class   , new ResultAdapter()) // magic adapter for results
+			.create(); //now we have a built object that can make GSON/JSON
 
 	public static String serialize(Object obj){
-		Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
-			       .create();
-		return gson.toJson(obj);
+		return gson.toJson(obj, obj.getClass());
 	}
 	
 	// to create a FOO, pass in FOO.class as targetClass!
 	//Shit's broken right now...
 	public static Object deserialize(String slurp, Class<?> targetClass){ //this needs to be cast properly on the other end
-		//magic switch to make sure all my maps, arraylists, etc all get serialized right
-		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
 		return gson.fromJson(slurp, targetClass);   
 	}
 	

@@ -89,8 +89,14 @@ protected TestGrade grade;
 	}
 	
 	@Override
+	public void takeQuestionnaire(){
+		super.takeQuestionnaire();
+		gradeQuestionnaire();
+	}
+	
+	@Override
 	public void ppQuestionnaire(){
-		if (this.question2Responses.isEmpty() || this.question2Responses == null){
+		if (this.question2Responses == null || this.question2Responses.isEmpty()){
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
@@ -110,11 +116,14 @@ protected TestGrade grade;
 	
 	@Override
 	public void gradeQuestionnaire(){
-		for(Question q : question2Responses.keySet()){
-			List<Result> answerList = question2Responses.get(q);
-			tallyCorrectAnswer(answerList, q);
+		for(Map.Entry<Question, List<Result>> entry : question2Responses.entrySet()){
+			List<Result> answerList = entry.getValue();
+			if (!(answerList == null)){
+				tallyCorrectAnswer(answerList, entry.getKey());
+			}
 		}
-		this.grade = new TestGrade(questionCount, points);
+		System.out.println(this.points + " " + this.questionCount);
+		this.grade = new TestGrade(this.questionCount, this.points);
 		this.grade.saveGrade();
 		System.out.println(this.grade.toString());
 	}
