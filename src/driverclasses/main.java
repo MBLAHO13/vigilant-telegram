@@ -21,7 +21,7 @@ public class main {
 				 *  Solution: black hole program errors.
 				 */
 				IOUtilities.errorReporter(thrown);
-				s = new State(new Menu1(), null); 
+				s = new State(new Menu1(), s.questionnaire); 
 			}
 		}
 	}

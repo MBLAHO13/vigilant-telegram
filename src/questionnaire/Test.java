@@ -107,9 +107,12 @@ protected TestGrade grade;
 				return;
 			}
 			q.ppQuestion();
-			for (Result r : this.question2Responses.get(q)){
-				System.out.println("Correct Answer:");
-				System.out.println(r.ppResponse());
+			List<Result> correctAnswers = this.question2Responses.get(q);
+			if (correctAnswers != null && !correctAnswers.isEmpty()){
+				for (Result r : correctAnswers){
+					System.out.println("Correct Answer:");
+					System.out.println(r.ppResponse());
+				}
 			}
 			System.out.println("---End of Question---");
 		}

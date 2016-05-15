@@ -2,6 +2,22 @@
 Project for CS 360, Software Design. Good design is not about the product, it is the journey.
 
 Mark Blaho
+CS 350 Part 3 -- Now with 100% less code binging!
+
+Issues:
+	- When you edit the correct answer for a test, it loses all notions of a correct answer. I've debugged it to hell and back, but the answer results become null after editing somehow and mess everything up.
+	- Tabulations act strangely sometimes. The HashMap I'm using sometimes doesn't recognize duplicates 100% of the time, so it doesn't count answers properly. I've overridden equals() and hashVal() but to no avail.
+
+
+Program Strengths:
+	- Solid Serialization: Object in, Object out. There's really no way you can hose that up as long as you don't touch the JSON. And if you touch the JSON, you deserve the angry errors.
+	- No Crashing: Main traps and dumps exceptions, then keeps on going.
+	- State-Menu: You can navigate the menus all over the place without losing work.
+	- Grade Results are saved in ./Grades, Tabulations are saved in ./Tabulations.
+	- I did not have to rip this apart to accomodate new functionality. In fact, all the methods worked nicely together. Quelle surprise.
+
+
+Mark Blaho
 CS 350 Part 2
 
  - Method for saving to File: 
