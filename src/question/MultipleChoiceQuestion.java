@@ -15,7 +15,6 @@ public class MultipleChoiceQuestion extends Question {
 	List<String> options;
 	public MultipleChoiceQuestion() {
 		options = new ArrayList<String>();
-		this.whoami = "MultipleChoiceQuestion";
 	}
 	
 	public MultipleChoiceQuestion(List<String> choices) {

@@ -9,12 +9,10 @@ import result.Result;
 
 // Because of GSON, this CANNOT BE ABSTRACT
 // Based on design principles, this should be abstract for code reuse.
-// However, my options are A) make this abstract B) make a custom adapter
 // Utility of GSON >>> having the prettiest code
-// TODO: Part 3, rework this so it's less of a turd
+
 public class Question {
 	private String prompt;
-	protected String whoami;
 	protected Result userResponse;
 	// ppFoo == pretty print FOO
 	
@@ -134,7 +132,6 @@ public class Question {
 		result = prime * result + ((prompt == null) ? 0 : prompt.hashCode());
 		result = prime * result
 				+ ((userResponse == null) ? 0 : userResponse.hashCode());
-		result = prime * result + ((whoami == null) ? 0 : whoami.hashCode());
 		return result;
 	}
 
@@ -160,11 +157,6 @@ public class Question {
 			if (other.userResponse != null)
 				return false;
 		} else if (!userResponse.equals(other.userResponse))
-			return false;
-		if (whoami == null) {
-			if (other.whoami != null)
-				return false;
-		} else if (!whoami.equals(other.whoami))
 			return false;
 		return true;
 	}

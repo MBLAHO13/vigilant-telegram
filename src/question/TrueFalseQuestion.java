@@ -13,7 +13,6 @@ import result.Result;
 public class TrueFalseQuestion extends MultipleChoiceQuestion {
 	public TrueFalseQuestion() {
 		super(Arrays.asList("True", "False"));
-		this.whoami = "TrueFalseQuestion";
 	}
 	@Override
 	public Question build(){

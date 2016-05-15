@@ -9,9 +9,7 @@ public class EssayQuestion extends ShortAnswerQuestion {
 	//no answer choices needed
 	
 
-	public EssayQuestion() {
-		this.whoami = "EssayQuestion";
-	}
+	public EssayQuestion() {	}
 
 	@Override
 	public Result acceptInput() {

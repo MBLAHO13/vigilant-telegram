@@ -20,6 +20,7 @@ private static final String INSTANCE  = "INSTANCE";
 public JsonElement serialize(Result src, Type typeOfSrc,
         JsonSerializationContext context) {
 		JsonObject retValue = new JsonObject();
+		//get the name while it's in memory, else Type erasure is going to nuke it
 		String className = src.getClass().getName();
 		retValue.addProperty(CLASSNAME, className);
 		JsonElement elem = context.serialize(src); 

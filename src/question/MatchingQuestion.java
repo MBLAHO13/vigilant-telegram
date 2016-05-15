@@ -18,7 +18,6 @@ public class MatchingQuestion extends Question {
 	public MatchingQuestion() {
 		this.leftChoices = new ArrayList<String>();
 		this.rightChoices = new ArrayList<String>();
-		this.whoami = "MatchingQuestion";
 	}
 
 	@Override

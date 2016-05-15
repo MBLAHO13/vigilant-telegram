@@ -22,9 +22,6 @@ public class RankingQuestion extends MatchingQuestion {
 	 * 
 	 */
 	
-	@SuppressWarnings("unused")
-	private String whoami = "RankingQuestion";
-	
 	public RankingQuestion() {
 		super();
 	}

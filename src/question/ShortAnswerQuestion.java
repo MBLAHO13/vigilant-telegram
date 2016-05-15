@@ -10,7 +10,6 @@ import result.ShortAnswerResult;
 public class ShortAnswerQuestion extends Question {
 	private int maxLength = 1000; //whatever man
 	public ShortAnswerQuestion() {
-		this.whoami = "ShortAnswerQuestion";
 	}
 	
 	@Override
