@@ -20,8 +20,10 @@ public class MatchingResult extends RankingResult {
 		{
 			String digits = String.valueOf(entry);
 			//thank you Dr Novak for making me do 500 billion proofs like this 
-		    sb.append( digits.substring(0, (digits.length()/2)-1 )+  " -- " +  digits.substring(digits.length()/2, digits.length()-1)); 
-		    sb.append("\n");
+			if(digits.length() != 0) {
+				sb.append( digits.substring(0, (int)Math.floor((digits.length()/2)-1)) +  " -- " +  digits.substring((int)Math.floor(digits.length()/2), digits.length()-1)); 
+				sb.append("\n");
+			}
 		}
 		return sb.toString();
 	}
