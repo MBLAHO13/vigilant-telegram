@@ -23,7 +23,7 @@ public class MatchingQuestion extends Question {
 	@Override
 	public void ppAnswerChoices() {
 		for(int i = 0; i < leftChoices.size(); i++){
-			System.out.println(i + ") " + leftChoices.get(i) + "\t" + i + "] " + rightChoices.get(i));
+			System.out.println(i + ") " + leftChoices.get(i) + "\t\t" + i + "] " + rightChoices.get(i));
 		}
 	}
 

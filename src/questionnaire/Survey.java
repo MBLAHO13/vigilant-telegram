@@ -117,6 +117,7 @@ public class Survey {
 	}
 	
 	public void tabulateQuestionnaire() {
+		System.out.println("--Tabulation--");
 		for(Question q : question2Responses.keySet()){
 			this.reportData.addResponse(q, q.getUserResponse());
 			this.reportData.printReport();
@@ -129,6 +130,7 @@ public class Survey {
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
+		System.out.println("--Questionnaire--");
 		for(Question q : this.question2Responses.keySet()){
 			if (q == null){
 				System.err.println("Question is null!");
@@ -136,6 +138,7 @@ public class Survey {
 			}
 			q.ppQuestion();
 		}
+		System.out.println("--End of questionnaire--");
 	}
 
 	public List<Question> getQuestionList() {
