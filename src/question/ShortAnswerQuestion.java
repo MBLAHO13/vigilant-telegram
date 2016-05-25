@@ -9,11 +9,7 @@ import result.ShortAnswerResult;
 
 public class ShortAnswerQuestion extends Question {
 	private int maxLength = 1000; //whatever man
-	public ShortAnswerQuestion() {	}
-
-	@Override
-	public void ppUserInput() {
-		System.out.println(this.userResponse.ppResponse());
+	public ShortAnswerQuestion() {
 	}
 	
 	@Override

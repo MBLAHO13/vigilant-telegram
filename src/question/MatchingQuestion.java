@@ -23,19 +23,14 @@ public class MatchingQuestion extends Question {
 	@Override
 	public void ppAnswerChoices() {
 		for(int i = 0; i < leftChoices.size(); i++){
-			System.out.println(i + ") " + leftChoices.get(i) + "\t" + i + "] " + rightChoices.get(i));
+			System.out.println(i + ") " + leftChoices.get(i) + "\t\t" + i + "] " + rightChoices.get(i));
 		}
-	}
-
-	@Override
-	public void ppUserInput() {
-		// TODO Part 3
 	}
 
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choices, each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		System.out.println("Enter your choices in integer format (matching 1 to 2 gives \"12\"), each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
 		List<Integer> choices = new ArrayList<Integer>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
@@ -51,12 +46,6 @@ public class MatchingQuestion extends Question {
 		return new MatchingResult(choices);
 	}
 
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part3
-		
-	}
-
 	public List<String> getRightChoices() {
 		return rightChoices;
 	}
@@ -70,6 +59,7 @@ public class MatchingQuestion extends Question {
 	}
 
 	protected void buildLeftChoices(){
+		this.leftChoices.clear();
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Enter your left-hand choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();

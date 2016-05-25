@@ -1,5 +1,7 @@
 package driverclasses;
 
+//import question.Question;
+//import question.TrueFalseQuestion;
 import menu.Menu1;
 
 
@@ -19,16 +21,19 @@ public class main {
 				 *  Solution: black hole program errors.
 				 */
 				IOUtilities.errorReporter(thrown);
-				s = new State(new Menu1(), null); 
+				s = new State(new Menu1(), s.questionnaire); 
 			}
 		}
 	}
-	//
+	
 
 }
+
 /*
 	public static void main(String[] args) {
 		TesterForGson.TesterForGSON(args);
-	}
+		Question tester = new TrueFalseQuestion();
+		System.out.println(tester.getClass());
+		}
 	}
 */

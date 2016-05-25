@@ -25,18 +25,9 @@ public class RankingQuestion extends MatchingQuestion {
 	public RankingQuestion() {
 		super();
 	}
-
-	@Override
-	public void ppUserInput() {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part 3
-	}
 	
 	protected void buildRightChoices(){
+		this.rightChoices.clear();
 		for (int i = 0; i < leftChoices.size(); i++){
 			this.rightChoices.add(i + ""); //i just want it to be a string :(
 		}

@@ -29,11 +29,6 @@ public class MultipleChoiceQuestion extends Question {
 	}
 
 	@Override
-	public void ppUserInput() {
-		// TODO Part3
-	}
-
-	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Enter your choice(s), each on its own line. Type " + IOUtilities.SENTINEL + " to quit.");
@@ -51,14 +46,10 @@ public class MultipleChoiceQuestion extends Question {
 		userReader.close();
 		return new MultipleChoiceResult(capture);
 	}
-
-	@Override
-	public void reviseEntireQuestion() {
-		// TODO Part3
-		
-	}
+	
 	@Override
 	protected void buildChoices(){
+		options.clear();
 		Scanner userReader = IOUtilities.safeScanner(System.in);
 		System.out.println("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
 		String userInput = userReader.nextLine();

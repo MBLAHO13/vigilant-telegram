@@ -2,30 +2,34 @@ package questionnaire;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import completedResponse.SurveyResponse;
 
 import driverclasses.IOUtilities;
 
 import question.*;
+import result.Result;
 
 public class Survey {
 	
-	protected List<Question> questionList;
-	//TODO part 3 (do I like this format?)
-	protected List<String> reportData; //raw report data
+	protected Map<Question, List<Result>> question2Responses;
+	protected SurveyResponse reportData; //raw report data
 	protected List<String> options = Arrays.asList("Add a new T/F question", "Add a new Multiple Choice question", 
 			"Add a new Short Answer question", "Add a new Essay Question", "Add a new Ranking Question",
 			"Add a new Matching Question", "Back");
 
 
 	public Survey() {
-		this.questionList = new ArrayList<Question>();
-		this.reportData = new ArrayList<String>();
+		this.question2Responses = new LinkedHashMap<Question, List<Result>>();
+		this.reportData = new SurveyResponse();
 	}
 	
-	public Survey(List<Question> questionList) {
-		this.questionList = questionList;
-		this.reportData = new ArrayList<String>();
+	public Survey(Map<Question, List<Result>> questionList) {
+		this.question2Responses = questionList;
+		this.reportData = new SurveyResponse();
 	}
 
 	
@@ -35,7 +39,7 @@ public class Survey {
 		do {
 			Question newQuestion = newSurvey.addQuestion();
 			if (newQuestion != null){
-				newSurvey.questionList.add(newQuestion);
+				newSurvey.question2Responses.put(newQuestion, null); //we add null because this is a survey. no correct answer.
 				System.out.println("Add another Question?");
 				doAnother = IOUtilities.choices(IOUtilities.CONFIRM); //Asks the user Yes or no, returns 1 or 2
 			} else{
@@ -80,7 +84,13 @@ public class Survey {
 	}
 
 	public void editQuestionnaire() {
-		// TODO Part3
+		System.out.println("Now revising current Questionnaire.");
+		for (Question q : question2Responses.keySet()){
+			System.out.println("Now revising question.");
+			q.reviseEntireQuestion();
+			System.out.println("Question revised.");
+		}
+		System.out.println("Finished revising survey");
 	}
 
 	
@@ -95,37 +105,49 @@ public class Survey {
 
 	
 	public void takeQuestionnaire() {
-		if (this.questionList.isEmpty()){
+		if (this.question2Responses.isEmpty()){
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
-		for(Question q : questionList){
+		for(Question q : this.question2Responses.keySet()){
 			q.ppQuestion();
 			q.setUserResponse(q.acceptInput());
 		}
-		
+		tabulateQuestionnaire();
 	}
 	
 	public void tabulateQuestionnaire() {
-		// TODO part3
-		
+		System.out.println("--Tabulation--");
+		for(Question q : question2Responses.keySet()){
+			this.reportData.addResponse(q, q.getUserResponse());
+			this.reportData.printReport();
+			this.reportData.saveTabulation();
+		}
 	}
 	
 	public void ppQuestionnaire(){
-		if (this.questionList.isEmpty() || this.questionList == null){
+		if (this.question2Responses.isEmpty() || this.question2Responses == null){
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
-		for(Question q : questionList){
+		System.out.println("--Questionnaire--");
+		for(Question q : this.question2Responses.keySet()){
 			if (q == null){
 				System.err.println("Question is null!");
 				return;
 			}
 			q.ppQuestion();
 		}
+		System.out.println("--End of questionnaire--");
 	}
 
 	public List<Question> getQuestionList() {
-		return questionList;
+		//thankfully, ArrayList has a constructor that takes in a Set<Object>
+		// see http://stackoverflow.com/a/1026736
+		return new ArrayList<Question>(question2Responses.keySet());
+	}
+	
+	public void gradeQuestionnaire(){
+		System.out.println("You cannot grade Surveys. You may tabulate a survey, or create a test.");
 	}
 }
