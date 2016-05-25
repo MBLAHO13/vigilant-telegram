@@ -110,7 +110,7 @@ public class Survey {
 			return;
 		}
 		for(Question q : this.question2Responses.keySet()){
-			q.ppQuestion();
+			IOUtilities.speakString(q.ppQuestion());
 			q.setUserResponse(q.acceptInput());
 		}
 		tabulateQuestionnaire();
@@ -130,15 +130,15 @@ public class Survey {
 			System.err.println("Empty Questionnaire.");
 			return;
 		}
-		System.out.println("--Questionnaire--");
+		IOUtilities.speakString("--Questionnaire--");
 		for(Question q : this.question2Responses.keySet()){
 			if (q == null){
 				System.err.println("Question is null!");
 				return;
 			}
-			q.ppQuestion();
+			IOUtilities.speakString(q.ppQuestion());
 		}
-		System.out.println("--End of questionnaire--");
+		IOUtilities.speakString("--End of questionnaire--");
 	}
 
 	public List<Question> getQuestionList() {

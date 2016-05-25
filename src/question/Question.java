@@ -20,7 +20,7 @@ public class Question {
 	// these will all cough up exceptions to be trapped
 	// these methods should never be executed, since they are overridden
 	// this just makes certain of that
-	protected void ppAnswerChoices() {
+	protected String ppAnswerChoices() {
 		throw new UnsupportedOperationException("Do not call Question.ppAnswerChoices().");
 	}
 	
@@ -62,8 +62,8 @@ public class Question {
 	public Question(){
 		
 	}
-	public void ppPrompt(){
-		System.out.println("\nQuestion: " + prompt);
+	public String ppPrompt(){
+		return ("Question: " + prompt);
 	}
 	
 	public String getPrompt() {
@@ -83,9 +83,8 @@ public class Question {
 		this.userResponse = userResponse;
 	}
 	
-	public void ppQuestion(){
-		ppPrompt();
-		ppAnswerChoices();
+	public String ppQuestion(){
+		return ppPrompt() + "\n" + ppAnswerChoices();
 	}
 	
 	public boolean checkUserResponse(Result correctResult){
@@ -113,11 +112,11 @@ public class Question {
 		return validResponses;
 	}
 
-	public void ppResult(){
+	public String ppResult(){
 		if (userResponse != null){
-			System.out.println(userResponse.ppResponse());
+			return (userResponse.ppResponse());
 		}else{
-			System.out.println("No User response Submitted");
+			return("No User response Submitted");
 		}
 	}
 

@@ -36,8 +36,8 @@ public class ShortAnswerQuestion extends Question {
 	}
 	
 	@Override
-	protected void ppAnswerChoices() {
-		System.out.println("(No answer choices for free response)");
+	protected String ppAnswerChoices() {
+		return ("(No answer choices for free response)");
 	}
 	
 	protected void buildChoices(){

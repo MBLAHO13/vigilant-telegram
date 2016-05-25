@@ -22,10 +22,12 @@ public class MultipleChoiceQuestion extends Question {
 	}
 
 	@Override
-	public void ppAnswerChoices() {
+	public String ppAnswerChoices() {
+		String response = "";
 		for (int i = 1; i < options.size()+1; i++){
-			System.out.println(i + ") " + options.get(i-1));
+			response += ("Choice " + i + " is " + options.get(i-1) + "\n");
 		}
+		return response;
 	}
 
 	@Override
@@ -39,7 +41,7 @@ public class MultipleChoiceQuestion extends Question {
 				capture.add(Integer.parseInt(userInput.trim()));
 				userInput = userReader.nextLine();
 			}catch (NumberFormatException e){
-				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				IOUtilities.printString("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
 				userInput = userReader.nextLine();
 			}
 		}
@@ -51,7 +53,7 @@ public class MultipleChoiceQuestion extends Question {
 	protected void buildChoices(){
 		options.clear();
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
+		IOUtilities.printString("Your answer or " + IOUtilities.SENTINEL + " on it's own line to quit.");
 		String userInput = userReader.nextLine();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
 			this.options.add(userInput);

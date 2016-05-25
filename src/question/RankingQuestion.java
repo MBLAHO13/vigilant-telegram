@@ -35,7 +35,7 @@ public class RankingQuestion extends MatchingQuestion {
 	@Override
 	public Result acceptInput() {
 		Scanner userReader = IOUtilities.safeScanner(System.in);
-		System.out.println("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
+		IOUtilities.printString("Enter your choices, each on it's own line. Type " + IOUtilities.SENTINEL + " to quit.");
 		String userInput = userReader.nextLine();
 		List<Integer> choices = new ArrayList<Integer>();
 		while(!userInput.equals(IOUtilities.SENTINEL)){
@@ -43,7 +43,7 @@ public class RankingQuestion extends MatchingQuestion {
 				choices.add(Integer.parseInt(userInput.trim()));
 				userInput = userReader.nextLine();
 			}catch (NumberFormatException e){
-				System.err.println("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
+				IOUtilities.printString("Not an integer. Please type an integer or " + IOUtilities.SENTINEL + ".");
 				userInput= userReader.nextLine();
 			}
 		}

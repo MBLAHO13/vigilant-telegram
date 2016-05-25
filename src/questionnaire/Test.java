@@ -98,23 +98,22 @@ protected TestGrade grade;
 	@Override
 	public void ppQuestionnaire(){
 		if (this.question2Responses == null || this.question2Responses.isEmpty()){
-			System.err.println("Empty Questionnaire.");
+			IOUtilities.speakString("Empty Questionnaire.");
 			return;
 		}
 		for(Question q : this.question2Responses.keySet()){
 			if (q == null){
-				System.err.println("Question is null!");
+				IOUtilities.speakString("Question is null!");
 				return;
 			}
-			q.ppQuestion();
+			IOUtilities.speakString(q.ppQuestion());
 			List<Result> correctAnswers = this.question2Responses.get(q);
 			if (correctAnswers != null && !correctAnswers.isEmpty()){
 				for (Result r : correctAnswers){
-					System.out.println("Correct Answer:");
-					System.out.println(r.ppResponse());
+					IOUtilities.speakString("Correct Answer: " + r.ppResponse());
 				}
 			}
-			System.out.println("---End of Question---");
+			IOUtilities.speakString("---End of Question---");
 		}
 	}
 	
@@ -129,7 +128,7 @@ protected TestGrade grade;
 		System.out.println(this.points + " " + this.questionCount);
 		this.grade = new TestGrade(this.questionCount, this.points);
 		this.grade.saveGrade();
-		System.out.println(this.grade.toString());
+		IOUtilities.speakString(this.grade.toString());
 	}
 	
 	public boolean tallyCorrectAnswer(List<Result> answerList, Question q){

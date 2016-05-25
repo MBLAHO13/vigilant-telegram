@@ -21,10 +21,12 @@ public class MatchingQuestion extends Question {
 	}
 
 	@Override
-	public void ppAnswerChoices() {
+	public String ppAnswerChoices() {
+		String response = "";
 		for(int i = 0; i < leftChoices.size(); i++){
-			System.out.println(i + ") " + leftChoices.get(i) + "\t\t" + i + "] " + rightChoices.get(i));
+			response += ("Left Choice " + i + " is " + leftChoices.get(i) + "and " + "Right choice " +  i + " is " + rightChoices.get(i) + "\n");
 		}
+		return response;
 	}
 
 	@Override

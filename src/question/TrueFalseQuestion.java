@@ -22,11 +22,11 @@ public class TrueFalseQuestion extends MultipleChoiceQuestion {
 	}
 	@Override
 	protected void buildChoices(){
-		System.out.println("The answer choices for a True-False question are always \"True\" and \"False\".");
+		IOUtilities.printString("The answer choices for a True-False question are always \"True\" and \"False\".");
 	}
 	@Override 
 	public List<Result> buildCorrectResponseList(){
-		System.out.println("Input your correct choices one on each line, or " + IOUtilities.SENTINEL + " to quit.");
+		IOUtilities.printString("Input your correct choices one on each line, or " + IOUtilities.SENTINEL + " to quit.");
 		List<Result> validResponses = new ArrayList<Result>();
 		validResponses.add(this.acceptInput());
 		return validResponses;

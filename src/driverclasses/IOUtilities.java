@@ -1,31 +1,26 @@
 package driverclasses;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+
+import java.io.*;
+import java.util.*;
 
 import question.Question;
 import result.Result;
 
 import com.google.gson.*;
 
+import com.sun.speech.freetts.*;
+
 public class IOUtilities {
 	
 	public static final String SENTINEL = "DONE";
+	public static final String VOICE = "kevin16";
 	public static final List<String> CONFIRM = Arrays.asList("Yes", "No");
 	private static final Gson gson = new GsonBuilder()
 			.enableComplexMapKeySerialization() //magic switch to make sure all my maps all get serialized right
 			.registerTypeAdapter(Question.class   , new QuestionAdapter()) //magic adapter for questions 
 			.registerTypeAdapter(Result.class   , new ResultAdapter()) // magic adapter for results
 			.create(); //now we have a built object that can make GSON/JSON
+	private static final Voice speaker = VoiceManager.getInstance().getVoice(VOICE);
 
 	public static String serialize(Object obj){
 		return gson.toJson(obj, obj.getClass());
@@ -150,5 +145,15 @@ public class IOUtilities {
 	public static void errorReporter(Throwable thrown){
 		System.err.println("[ERROR]  " + thrown.toString() + "thrown, something bad happened!");
 		IOUtilities.spew(thrown.toString() + "\n" + Arrays.toString(thrown.getStackTrace()), new File("Dumps" + System.getProperty("file.separator") + "error" + (new Date()).getTime())); //output stacktrace to file for review
+	}
+	
+	public static void speakString(String text){
+		speaker.allocate();
+		speaker.speak(text);
+		speaker.deallocate();
+	}
+	
+	public static void printString(String text){
+		System.out.println(text);
 	}
 }
