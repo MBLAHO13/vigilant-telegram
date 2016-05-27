@@ -20,7 +20,7 @@ public class IOUtilities {
 			.registerTypeAdapter(Question.class   , new QuestionAdapter()) //magic adapter for questions 
 			.registerTypeAdapter(Result.class   , new ResultAdapter()) // magic adapter for results
 			.create(); //now we have a built object that can make GSON/JSON
-	private static final Voice speaker = VoiceManager.getInstance().getVoice(VOICE);
+	//private static final 
 
 	public static String serialize(Object obj){
 		return gson.toJson(obj, obj.getClass());
@@ -148,6 +148,8 @@ public class IOUtilities {
 	}
 	
 	public static void speakString(String text){
+		VoiceManager voiceManager = VoiceManager.getInstance();
+        Voice speaker = voiceManager.getVoice(VOICE);
 		speaker.allocate();
 		speaker.speak(text);
 		speaker.deallocate();

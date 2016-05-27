@@ -38,7 +38,7 @@ public class Question {
 		System.out.println("Type your new prompt or hit enter to keep the old input.");
 		Scanner safeScanner = IOUtilities.safeScanner(System.in);
 		System.out.println("Old prompt:");
-		this.ppPrompt();
+		IOUtilities.printString(this.ppPrompt());
 		System.out.println("New Prompt?");
 		String userChoice = safeScanner.nextLine();
 		if (userChoice != "" && userChoice != IOUtilities.SENTINEL){
